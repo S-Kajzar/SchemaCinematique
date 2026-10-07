@@ -12,6 +12,10 @@ import html
 import json
 import pathlib
 import subprocess
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "exercices"))
+from systemes import SYSTEMES  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
@@ -107,10 +111,15 @@ EXERCICES = [
      "title": "Degrés de liberté : évaluation", "img": "serie-3.jpg", "meta": "12 systèmes · 12 études · 48 min",
      "desc": "Douze systèmes pour faire le point, de la plaque d'immatriculation au touret à meuler : une étude par "
              "système, à traiter de préférence en mode examen."},
+] + [
+    {"file": f"exercice-2-{x['slug']}.html", "tag": f"Exercice 2.1 · Système {x['num']}", "level": "Niveau 1", "sys": True,
+     "title": x["titre"], "img": f"vignette-{x['slug']}.jpg",
+     "meta": f"{len(x['etudes'])} études · {9 * len(x['etudes'])} questions", "desc": x["card"]}
+    for x in SYSTEMES
+] + [
     {"file": None, "tag": "Exercice 1.2", "level": "Niveau 2", "title": "Liaisons mécaniques",
      "desc": "Surfaces de contact, orientation des liaisons et liaisons équivalentes."},
-    {"file": None, "tag": "Exercice 2.1", "level": "Niveau 1", "title": "Schéma cinématique",
-     "desc": "Classes d'équivalence, graphe des liaisons et schéma cinématique d'un mécanisme simple."},
+
 ]
 
 
@@ -127,7 +136,13 @@ def render_hub(sch):
         for c in COURS)
     exos = []
     for e in EXERCICES:
-        if e["file"]:
+        if e.get("sys"):
+            exos.append(
+                f'<article class="mode-card ex-card"><img src="{data_uri(e["img"])}" alt="">'
+                f'<div class="mc-head"><span class="mc-tag">{e["tag"]}{pastille(e["level"])}</span><h3>{e["title"]}</h3></div>'
+                f'<p>{e["desc"]}</p><p class="small ex-meta">{e["meta"]}</p><div class="ex-btns">'
+                f'<a class="btn" href="{e["file"]}">Commencer</a></div></article>')
+        elif e["file"]:
             exos.append(
                 f'<article class="mode-card ex-card"><img src="{data_uri(e["img"])}" alt="" width="360" height="260">'
                 f'<div class="mc-head"><span class="mc-tag">{e["tag"]}{pastille(e["level"])}</span><h3>{e["title"]}</h3></div>'
@@ -357,9 +372,32 @@ perspective.</p>
                 "avec schémas animés, jeu et quiz.", body, "cours-page", scripts=scripts)
 
 
+# ============================================================ exercice 2.1 — toutes les liaisons d'un système réel
+def render_systeme(x):
+    data = {"images": {k: {"src": data_uri(v["file"]), "w": v["w"], "h": v["h"], "alt": v["alt"], "rep": v["rep"],
+                           "zones": v["zones"]} for k, v in x["images"].items()},
+            "etudes": x["etudes"], "graphe": x["graphe"], "retenir": x["retenir"]}
+    body = f"""<p class="c-top no-print"><a class="btn ghost" href="index.html">{HOUSE} Accueil</a></p>
+<div class="home-top home-top-single"><div class="home-top-l"><header class="home-head"><span class="mc-tag">Exercice 2.1 · Système {x["num"]}</span>{pastille("Niveau 1")}
+<h1 id="home-title">{x["titre"]} : étude de toutes ses liaisons</h1>
+<p class="home-sub">{x["intro"]} Pour chaque liaison : remplis le tableau des mobilités, nomme la liaison et son axe, puis choisis son
+schéma. La pièce étudiée est en <b class="r">rouge</b>, la pièce de référence en <b class="b">bleu</b>.</p></header></div></div>
+<nav id="tabs" class="eo-tabs" role="tablist" aria-label="Études"></nav>
+<div class="eo"><div class="eo-fig"><div class="eo-img"><img id="fig-img" src="" alt="">
+<svg id="ov" aria-hidden="true"><g id="ov-static"></g><g id="ov-move"></g></svg><div id="fig-rep"></div></div>
+<div class="eo-score"><div><span>Questions traitées</span><b id="sc-q"></b></div><div><span>Note</span><b id="sc-n"></b></div></div></div>
+<div id="etude" class="eo-panel" aria-live="polite"></div></div>"""
+    scripts = ("<script>window.__SYSTEME__ = " + json.dumps(data, ensure_ascii=False) + ";</script>\n<script>\n"
+               + (COURS_DIR / "schemas.js").read_text(encoding="utf-8") + "\n"
+               + (SRC / "exercices" / "systeme.js").read_text(encoding="utf-8") + "</script>")
+    return page(f"Exercice 2.1 — {x['titre']}", f"Exercice interactif : toutes les liaisons — {x['titre'].lower()}.",
+                body, "cours-page", extra_css=(SRC / "exercices" / "systeme.css").read_text(encoding="utf-8"), scripts=scripts)
+
+
 def build():
     sch = schemas()
-    out = {"index.html": render_hub(sch), COURS[0]["file"]: render_cours_liaisons()}
+    out = {"index.html": render_hub(sch), COURS[0]["file"]: render_cours_liaisons(),
+           **{f"exercice-2-{x['slug']}.html": render_systeme(x) for x in SYSTEMES}}
     for c in COURS[1:]:
         out[c["file"]] = render_en_edition(c)
     for name, text in out.items():

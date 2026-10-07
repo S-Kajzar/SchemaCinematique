@@ -10,6 +10,7 @@ GitHub Pages. L'accueil reprend la construction du dépôt RDM : une grille « L
 | `cours-1-1-liaisons-mecaniques.html` | Cours 1.1 — Les liaisons mécaniques (Niveau 1), interactif |
 | `cours-1-2-…`, `cours-2-1-…`, `cours-2-2-…` | cours 1.2 (Niveau 2), 2.1 et 2.2 (schéma cinématique) — « En cours d'édition » |
 | `exercice-1-degres-de-liberte-serie-1.html` … `serie-3.html` | Exercice 1.1 — Degrés de liberté (Niveau 1), séries 1 à 3 (inchangées) |
+| `exercice-2-eolienne.html`, `-support-smartphone`, `-imprimante-3d`, `-grue-camera` | Exercice 2.1 — toutes les liaisons d'un système réel (Niveau 1) |
 
 ## Cours 1.1 — Les liaisons mécaniques (Niveau 1)
 
@@ -34,6 +35,15 @@ Choix et compléments par rapport au cours d'origine :
   rotation Rz bloquée.
 - Ajouts : exemples de la vie courante pour chaque liaison, exemple résolu de la porte, jeu et quiz.
 
+## Exercice 2.1 — toutes les liaisons d'un système réel
+
+Une page par système (éolienne, support de smartphone, imprimante 3D, grue de tournage). Pour chaque liaison :
+tableau des mobilités cliquable, nom et axe, puis (une fois 1 et 2 validées) choix du schéma parmi 4 ; le mouvement
+est rejoué sur la photo, la note sur 20 se met à jour et le bilan trace le graphe des liaisons à partir des réponses.
+
+**Ajouter un système** : déposer la photo dans `src/images/`, puis décrire dans `src/exercices/systemes.py` ses zones
+(chemins SVG en pixels de la photo), ses études et son graphe ; la page et sa carte d'accueil sont générées.
+
 ## Régénérer
 
 ```sh
@@ -45,7 +55,7 @@ La charte (bloc de style) est lue dans la page d'exercice de la série 1, pour r
 ## Tester
 
 ```sh
-NODE_PATH=$(npm root -g) node --test tests/cours.test.js   # accueil, cours 1.1, jeu, quiz, mobile
+NODE_PATH=$(npm root -g) node --test tests/cours.test.js   # accueil, cours 1.1, exercices 2.1 (20/20 sur chaque système), mobile
 ```
 
 ## Organisation
@@ -55,6 +65,8 @@ NODE_PATH=$(npm root -g) node --test tests/cours.test.js   # accueil, cours 1.1,
 | `src/generer.py` | catalogue des cours et exercices, accueil, cours 1.1, assemblage |
 | `src/cours/schemas.js` | représentations planes normalisées des 11 liaisons (SVG) |
 | `src/cours/liaisons.js` | moteur du cours : bloc 3D, explorateur, récapitulatif, jeu, quiz |
+| `src/exercices/systemes.py` | données des systèmes de l'exercice 2.1 |
+| `src/exercices/systeme.js`, `systeme.css` | moteur et styles de l'exercice 2.1 |
 | `src/cours/cours.css` | styles de l'accueil et du cours (en plus de la charte) |
 | `src/images/originaux/` | images extraites du cours PDF |
 | `src/images/` | images recadrées intégrées en data URI |
