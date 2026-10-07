@@ -1,5 +1,4 @@
 .r{color:var(--p2)} .b{color:var(--p1)}
-.pastille.proto{background:var(--orange)}
 .eo-tabs{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px}
 .eo-tabs button{border:1.5px solid var(--encre); background:#fff; padding:6px 12px; font:600 .92rem var(--f-titre); cursor:pointer}
 .eo-tabs button[aria-selected="true"]{background:var(--encre); color:#fff}
@@ -15,9 +14,12 @@
 #ov .zm{fill:rgba(217,69,43,.9); stroke:#7a1d0e; stroke-width:2}
 #ov.blocked #ov-static .zr{animation:shake .35s 3}
 #ov-static path{transform-box:fill-box; transform-origin:center}
-.eo-rep{position:absolute; left:8px; bottom:8px; width:80px}
-.eo-rep line{stroke:var(--encre); stroke-width:2.5} .eo-rep circle{fill:#fff; stroke:var(--encre); stroke-width:2} .eo-rep .pt{fill:var(--encre)}
+.rep-pos{position:absolute; width:68px; background:rgba(255,255,255,.85); border:1px solid var(--trait)}
+.rep-pos.bl{left:6px; bottom:6px} .rep-pos.tl{left:6px; top:6px} .rep-pos.tr{right:6px; top:6px}
+.eo-rep{display:block; width:100%}
+.eo-rep line{stroke:var(--encre); stroke-width:2.5} .eo-rep circle.o{fill:#fff; stroke:var(--encre); stroke-width:2} .eo-rep .pt,.eo-rep marker path{fill:var(--encre)}
 .eo-rep text{font:700 15px var(--f-titre); fill:var(--encre)}
+.warn{color:var(--rouge); font-weight:700; margin:4px 0 0}
 .eo-score{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px}
 .eo-score div{background:var(--encre); color:#fff; padding:6px 10px}
 .eo-score span{display:block; font-size:.78rem; color:#D7DDE2} .eo-score b{font:700 1.2rem var(--f-titre); color:var(--jaune)}

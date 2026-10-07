@@ -12,6 +12,10 @@ import html
 import json
 import pathlib
 import subprocess
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "exercices"))
+from systemes import SYSTEMES  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
@@ -107,12 +111,15 @@ EXERCICES = [
      "title": "Degrés de liberté : évaluation", "img": "serie-3.jpg", "meta": "12 systèmes · 12 études · 48 min",
      "desc": "Douze systèmes pour faire le point, de la plaque d'immatriculation au touret à meuler : une étude par "
              "système, à traiter de préférence en mode examen."},
+] + [
+    {"file": f"exercice-2-{x['slug']}.html", "tag": f"Exercice 2.1 · Système {x['num']}", "level": "Niveau 1", "sys": True,
+     "title": x["titre"], "img": f"vignette-{x['slug']}.jpg",
+     "meta": f"{len(x['etudes'])} études · {9 * len(x['etudes'])} questions", "desc": x["card"]}
+    for x in SYSTEMES
+] + [
     {"file": None, "tag": "Exercice 1.2", "level": "Niveau 2", "title": "Liaisons mécaniques",
      "desc": "Surfaces de contact, orientation des liaisons et liaisons équivalentes."},
-    {"file": "exercice-2-eolienne.html", "tag": "Exercice 2.1", "level": "Niveau 1", "poc": True,
-     "title": "L'éolienne : toutes ses liaisons", "img": "eolienne.png", "meta": "4 études · 36 questions · prototype",
-     "desc": "Rotor, nacelle, pales, mât, fondation : pour chaque liaison, tableau des mobilités, nom, axe et schéma ; "
-             "le mouvement s'anime sur l'éolienne, puis le graphe des liaisons se construit."},
+
 ]
 
 
@@ -129,9 +136,9 @@ def render_hub(sch):
         for c in COURS)
     exos = []
     for e in EXERCICES:
-        if e.get("poc"):
+        if e.get("sys"):
             exos.append(
-                f'<article class="mode-card ex-card"><img src="{data_uri(e["img"])}" alt="" width="465" height="541">'
+                f'<article class="mode-card ex-card"><img src="{data_uri(e["img"])}" alt="">'
                 f'<div class="mc-head"><span class="mc-tag">{e["tag"]}{pastille(e["level"])}</span><h3>{e["title"]}</h3></div>'
                 f'<p>{e["desc"]}</p><p class="small ex-meta">{e["meta"]}</p><div class="ex-btns">'
                 f'<a class="btn" href="{e["file"]}">Commencer</a></div></article>')
@@ -365,31 +372,32 @@ perspective.</p>
                 "avec schémas animés, jeu et quiz.", body, "cours-page", scripts=scripts)
 
 
-# ============================================================ exercice 2.1 — l'éolienne (prototype)
-def render_eolienne():
-    src = data_uri("eolienne.png")
+# ============================================================ exercice 2.1 — toutes les liaisons d'un système réel
+def render_systeme(x):
+    data = {"images": {k: {"src": data_uri(v["file"]), "w": v["w"], "h": v["h"], "alt": v["alt"], "rep": v["rep"],
+                           "zones": v["zones"]} for k, v in x["images"].items()},
+            "etudes": x["etudes"], "graphe": x["graphe"], "retenir": x["retenir"]}
     body = f"""<p class="c-top no-print"><a class="btn ghost" href="index.html">{HOUSE} Accueil</a></p>
-<div class="home-top home-top-single"><div class="home-top-l"><header class="home-head"><span class="mc-tag">Exercice 2.1</span>{pastille("Niveau 1")}
-<span class="pastille proto">Prototype</span><h1 id="home-title">L'éolienne : étude de toutes ses liaisons</h1>
-<p class="home-sub">Pour chaque liaison : remplis le tableau des mobilités, nomme la liaison et son axe, puis choisis son schéma.
-La pièce étudiée est en <b class="r">rouge</b>, la pièce de référence en <b class="b">bleu</b>.</p></header></div></div>
+<div class="home-top home-top-single"><div class="home-top-l"><header class="home-head"><span class="mc-tag">Exercice 2.1 · Système {x["num"]}</span>{pastille("Niveau 1")}
+<h1 id="home-title">{x["titre"]} : étude de toutes ses liaisons</h1>
+<p class="home-sub">{x["intro"]} Pour chaque liaison : remplis le tableau des mobilités, nomme la liaison et son axe, puis choisis son
+schéma. La pièce étudiée est en <b class="r">rouge</b>, la pièce de référence en <b class="b">bleu</b>.</p></header></div></div>
 <nav id="tabs" class="eo-tabs" role="tablist" aria-label="Études"></nav>
-<div class="eo"><div class="eo-fig"><div class="eo-img"><img src="{src}" alt="Éolienne : pales, nacelle avec générateur, mât et fondation" width="465" height="541">
-<svg id="ov" viewBox="0 0 465 541" aria-hidden="true"><g id="ov-static"></g><g id="ov-move"></g></svg>
-<svg class="eo-rep" viewBox="0 0 90 80" aria-label="Repère : x vers la droite, y vers le haut, z vers l'observateur"><line x1="20" y1="60" x2="70" y2="60"/><line x1="20" y1="60" x2="20" y2="12"/>
-<circle cx="20" cy="60" r="6"/><circle cx="20" cy="60" r="1.8" class="pt"/><text x="74" y="64">x</text><text x="14" y="9">y</text><text x="4" y="76">z</text></svg></div>
+<div class="eo"><div class="eo-fig"><div class="eo-img"><img id="fig-img" src="" alt="">
+<svg id="ov" aria-hidden="true"><g id="ov-static"></g><g id="ov-move"></g></svg><div id="fig-rep"></div></div>
 <div class="eo-score"><div><span>Questions traitées</span><b id="sc-q"></b></div><div><span>Note</span><b id="sc-n"></b></div></div></div>
 <div id="etude" class="eo-panel" aria-live="polite"></div></div>"""
-    scripts = ("<script>\n" + (COURS_DIR / "schemas.js").read_text(encoding="utf-8") + "\n"
-               + (SRC / "exercices" / "eolienne.js").read_text(encoding="utf-8") + "</script>")
-    return page("Exercice 2.1 — L'éolienne (prototype)", "Exercice interactif : toutes les liaisons d'une éolienne.",
-                body, "cours-page", extra_css=(SRC / "exercices" / "eolienne.css").read_text(encoding="utf-8"), scripts=scripts)
+    scripts = ("<script>window.__SYSTEME__ = " + json.dumps(data, ensure_ascii=False) + ";</script>\n<script>\n"
+               + (COURS_DIR / "schemas.js").read_text(encoding="utf-8") + "\n"
+               + (SRC / "exercices" / "systeme.js").read_text(encoding="utf-8") + "</script>")
+    return page(f"Exercice 2.1 — {x['titre']}", f"Exercice interactif : toutes les liaisons — {x['titre'].lower()}.",
+                body, "cours-page", extra_css=(SRC / "exercices" / "systeme.css").read_text(encoding="utf-8"), scripts=scripts)
 
 
 def build():
     sch = schemas()
     out = {"index.html": render_hub(sch), COURS[0]["file"]: render_cours_liaisons(),
-           "exercice-2-eolienne.html": render_eolienne()}
+           **{f"exercice-2-{x['slug']}.html": render_systeme(x) for x in SYSTEMES}}
     for c in COURS[1:]:
         out[c["file"]] = render_en_edition(c)
     for name, text in out.items():

@@ -29,7 +29,7 @@ test("accueil : grilles des cours et des exercices, liens valides", async () => 
   const hrefs = await page.locator("a[href]").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
   for (const h of hrefs) assert.ok(fs.existsSync(path.join(ROOT, h.split("#")[0])), "lien cassé : " + h);
   assert.equal(await page.locator('a[href$="#examen"]').count(), 3);
-  assert.equal(await page.locator(".ex-grid .pastille.n1").count() + await page.locator(".ex-grid .pastille.n2").count(), 9);
+  assert.equal(await page.locator('.ex-card a[href^="exercice-2-"]').count(), 4);
   assert.deepEqual(errors, []);
   await page.close();
 });
@@ -120,3 +120,33 @@ test("pages « en cours d'édition » et affichage mobile sans défilement horiz
     await page.close();
   }
 });
+
+for (const slug of ["eolienne", "support-smartphone", "imprimante-3d", "grue-camera"]) {
+  test("exercice 2.1 " + slug + " : réponses justes = 20/20, bilan, réponse fausse pénalisée", async () => {
+    const { page, errors } = await open("exercice-2-" + slug + ".html");
+    const E = await page.evaluate(() => window.__ETUDES__.ETUDES.map((e) => ({ mob: e.mob, nom: e.nom, axe: e.axe, ok: e.sch.findIndex((s) => s[3]) })));
+    for (const e of E) assert.equal(e.mob.length, 6);
+    for (let i = 0; i < E.length; i++) {
+      const e = E[i];
+      // la question 3 reste verrouillée tant que 1 et 2 ne sont pas validées
+      assert.ok(await page.locator(".sch-opt").first().isDisabled());
+      for (let j = 0; j < 6; j++) if (e.mob[j]) await page.click(`.mob-g[data-i="${j}"]`);
+      await page.check(`input[name=nom][value="${e.nom}"]`);
+      await page.check(`input[name=axe][value="${e.axe}"]`);
+      await page.click("#val12");
+      assert.match(await page.locator(".fb.ok").first().innerText(), /Correction/);
+      await page.click(`.sch-opt[data-k="${e.ok}"]`);
+      await page.click(i < E.length - 1 ? "#next" : "#bilan-btn");
+    }
+    assert.equal(await page.locator("#sc-n").innerText(), "20 / 20");
+    assert.equal(await page.locator(".graphe .gk").count(), 0);
+    // une étude refaite fausse : rechargement, tableau vide et mauvais nom
+    await page.reload();
+    await page.check('input[name=nom][value="Ponctuelle"]');
+    await page.check('input[name=axe][value="z"]');
+    await page.click("#val12");
+    assert.ok(await page.evaluate(() => window.__ETUDES__.note()) < 20 / E.length);
+    assert.deepEqual(errors, []);
+    await page.close();
+  });
+}
