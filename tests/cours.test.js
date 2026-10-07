@@ -28,7 +28,7 @@ test("accueil : grilles des cours et des exercices, liens valides", async () => 
   assert.match(await page.locator(".cours-grid .mode-card").first().innerText(), /Cours 1\.1\s+Niveau 1/);
   const hrefs = await page.locator("a[href]").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
   for (const h of hrefs) assert.ok(fs.existsSync(path.join(ROOT, h.split("#")[0])), "lien cassé : " + h);
-  assert.equal(await page.locator('a[href$="#examen"]').count(), 3);
+  assert.equal(await page.locator('a[href="exercice-1-degres-de-liberte.html"]').count(), 1);
   assert.equal(await page.locator('.ex-card a[href^="exercice-2-"]').count(), 4);
   assert.deepEqual(errors, []);
   await page.close();
@@ -123,7 +123,7 @@ test("pages « en cours d'édition » et affichage mobile sans défilement horiz
 
 for (const slug of ["eolienne", "support-smartphone", "imprimante-3d", "grue-camera"]) {
   test("exercice 2.1 " + slug + " : réponses justes = 20/20, bilan, réponse fausse pénalisée", async () => {
-    const { page, errors } = await open("exercice-2-" + slug + ".html");
+    const { page, errors } = await open("exercice-2-" + slug + ".html#entrainement");
     const E = await page.evaluate(() => window.__ETUDES__.ETUDES.map((e) => ({ mob: e.mob, nom: e.nom, axe: e.axe, ok: e.sch.findIndex((s) => s[3]) })));
     for (const e of E) assert.equal(e.mob.length, 6);
     for (let i = 0; i < E.length; i++) {
@@ -134,7 +134,7 @@ for (const slug of ["eolienne", "support-smartphone", "imprimante-3d", "grue-cam
       await page.check(`input[name=nom][value="${e.nom}"]`);
       await page.check(`input[name=axe][value="${e.axe}"]`);
       await page.click("#val12");
-      assert.match(await page.locator(".fb.ok").first().innerText(), /Correction/);
+          assert.match(await page.locator(".fb.ok").first().innerText(), /Correction/);
       await page.click(`.sch-opt[data-k="${e.ok}"]`);
       await page.click(i < E.length - 1 ? "#next" : "#bilan-btn");
     }
@@ -142,6 +142,7 @@ for (const slug of ["eolienne", "support-smartphone", "imprimante-3d", "grue-cam
     assert.equal(await page.locator(".graphe .gk").count(), 0);
     // une étude refaite fausse : rechargement, tableau vide et mauvais nom
     await page.reload();
+    await page.waitForSelector("#val12");
     await page.check('input[name=nom][value="Ponctuelle"]');
     await page.check('input[name=axe][value="z"]');
     await page.click("#val12");
@@ -150,3 +151,61 @@ for (const slug of ["eolienne", "support-smartphone", "imprimante-3d", "grue-cam
     await page.close();
   });
 }
+
+async function remplir(page, e) {
+  for (let j = 0; j < 6; j++) if (e.mob[j]) await page.click(`.mob-g[data-i="${j}"]`);
+  if (e.ddl != null) await page.click(`.ddl-b[data-n="${e.ddl}"]`);
+  await page.check(`input[name=nom][value="${e.nom}"]`);
+  await page.check(`input[name=axe][value="${e.axe}"]`);
+}
+
+test("exercice 1.1 : page des séries", async () => {
+  const { page, errors } = await open("exercice-1-degres-de-liberte.html");
+  assert.equal(await page.locator(".ex-card").count(), 3);
+  for (const h of await page.locator(".ex-card a").evaluateAll((as) => as.map((a) => a.getAttribute("href"))))
+    assert.ok(fs.existsSync(path.join(ROOT, h.split("#")[0])));
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+for (const n of [1, 2, 3]) {
+  test(`exercice 1.1 série ${n} : entraînement à 20/20`, async () => {
+    const { page, errors } = await open(`exercice-1-degres-de-liberte-serie-${n}.html#entrainement`);
+    const E = await page.evaluate(() => window.__ETUDES__.ETUDES);
+    assert.equal(E.length, { 1: 13, 2: 14, 3: 12 }[n]);
+    for (let i = 0; i < E.length; i++) {
+      await remplir(page, E[i]);
+      await page.click("#val12");
+      assert.match(await page.locator(".fb.ok").innerText(), /Correction/);
+      await page.click(i < E.length - 1 ? "#next" : "#bilan-btn");
+    }
+    assert.equal(await page.locator("#sc-n").innerText(), "20 / 20");
+    assert.equal(await page.locator(".bilan-t tbody tr.r-ok").count(), E.length);
+    assert.deepEqual(errors, []);
+    await page.close();
+  });
+}
+
+test("exercice 1.1 série 3 : examen sans correction avant la remise, note à la remise", async () => {
+  const { page, errors } = await open("exercice-1-degres-de-liberte-serie-3.html");
+  assert.ok(await page.locator("#modes").isVisible());
+  await page.click('[data-mode="exam"]');
+  const E = await page.evaluate(() => window.__ETUDES__.ETUDES);
+  for (let i = 0; i < E.length; i++) {
+    if (i !== 0) await remplir(page, E[i]); // étude 1 laissée vide
+    assert.equal(await page.locator(".fb").count(), 0);
+    assert.equal(await page.locator("#val12").count(), 0);
+    if (i < E.length - 1) await page.click("#next");
+  }
+  assert.equal(await page.locator("#sc-n").innerText(), "après la remise");
+  await page.click("#rendre");
+  assert.match(await page.locator("#rendre").innerText(), /1 étude incomplète/);
+  await page.click("#rendre");
+  const note = await page.evaluate(() => window.__ETUDES__.note());
+  assert.ok(note > 17 && note < 20, "note " + note);
+  assert.equal(await page.locator(".bilan-t tbody tr.r-ko").count(), 1);
+  await page.click("#back");
+  assert.ok(await page.locator(".fb.ko").count() >= 1);
+  assert.deepEqual(errors, []);
+  await page.close();
+});

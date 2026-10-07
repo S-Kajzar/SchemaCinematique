@@ -21,7 +21,6 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 IMAGES = SRC / "images"
 COURS_DIR = SRC / "cours"
-CHARTE_SOURCE = ROOT / "exercice-1-degres-de-liberte-serie-1.html"
 TITRE = "Liaisons mécaniques et schéma cinématique"
 
 
@@ -36,10 +35,8 @@ def data_uri(name):
 
 
 def charte():
-    """Bloc de style du gabarit, tel qu'il figure dans les pages d'exercice."""
-    g = CHARTE_SOURCE.read_text(encoding="utf-8")
-    s0 = g.index("<style>:root{")
-    return g[s0:g.index("</style>", s0) + len("</style>")]
+    """Bloc de style du gabarit des exercices d'origine (src/charte.css)."""
+    return "<style>" + (SRC / "charte.css").read_text(encoding="utf-8") + "</style>"
 
 
 def schemas():
@@ -98,19 +95,31 @@ COURS = [
      "ready": False, "desc": "Schéma cinématique minimal, lecture d'un mécanisme réel, mouvements et trajectoires."},
 ]
 
+SERIES = json.loads((SRC / "exercices" / "series.json").read_text(encoding="utf-8"))
+SERIES_TXT = {
+    1: ("Application", "Douze systèmes du quotidien, du tiroir à l'étau de moto."),
+    2: ("Révision", "Douze nouveaux systèmes, avec deux cas particuliers : un pied à coulisse dont on serre la vis, "
+                    "et un extracteur à deux liaisons."),
+    3: ("Évaluation", "Douze systèmes pour faire le point, de la plaque d'immatriculation au touret à meuler ; "
+                      "à traiter de préférence en mode examen."),
+}
+
+
+def serie_file(n):
+    return f"exercice-1-degres-de-liberte-serie-{n}.html"
+
+
+def serie_stats(se):
+    et = sum(len(x["etudes"]) for x in se["systemes"])
+    return len(se["systemes"]), et, sum(x["minutes"] for x in se["systemes"])
+
+
 EXERCICES = [
-    {"file": "exercice-1-degres-de-liberte-serie-1.html", "tag": "Exercice 1.1 · Série 1", "level": "Niveau 1",
-     "title": "Degrés de liberté : application", "img": "serie-1.jpg", "meta": "12 systèmes · 13 études · 52 min",
-     "desc": "Douze systèmes du quotidien, du tiroir à l'étau de moto : pour chacun, repère les mouvements possibles "
-             "d'une pièce par rapport à l'autre, compte les degrés de liberté et nomme la liaison."},
-    {"file": "exercice-1-degres-de-liberte-serie-2.html", "tag": "Exercice 1.1 · Série 2", "level": "Niveau 1",
-     "title": "Degrés de liberté : révision", "img": "serie-2.jpg", "meta": "12 systèmes · 14 études · 56 min",
-     "desc": "Douze nouveaux systèmes pour réviser, du repose-pied au panneau de signalisation, avec deux cas "
-             "particuliers : un pied à coulisse dont on serre la vis, et un extracteur à deux liaisons."},
-    {"file": "exercice-1-degres-de-liberte-serie-3.html", "tag": "Exercice 1.1 · Série 3", "level": "Niveau 1",
-     "title": "Degrés de liberté : évaluation", "img": "serie-3.jpg", "meta": "12 systèmes · 12 études · 48 min",
-     "desc": "Douze systèmes pour faire le point, de la plaque d'immatriculation au touret à meuler : une étude par "
-             "système, à traiter de préférence en mode examen."},
+    {"file": "exercice-1-degres-de-liberte.html", "tag": "Exercice 1.1", "level": "Niveau 1", "sys": True, "btn": "Choisir une série",
+     "title": "Degrés de liberté", "img": "serie-1.jpg",
+     "meta": f"3 séries · {sum(serie_stats(se)[1] for se in SERIES)} études",
+     "desc": "Trente-six systèmes du quotidien, du tiroir à l'étau : tableau des mobilités, nombre de degrés de liberté, "
+             "nom et axe de la liaison. Trois séries : application, révision, évaluation."},
 ] + [
     {"file": f"exercice-2-{x['slug']}.html", "tag": f"Exercice 2.1 · Système {x['num']}", "level": "Niveau 1", "sys": True,
      "title": x["titre"], "img": f"vignette-{x['slug']}.jpg",
@@ -141,7 +150,7 @@ def render_hub(sch):
                 f'<article class="mode-card ex-card"><img src="{data_uri(e["img"])}" alt="">'
                 f'<div class="mc-head"><span class="mc-tag">{e["tag"]}{pastille(e["level"])}</span><h3>{e["title"]}</h3></div>'
                 f'<p>{e["desc"]}</p><p class="small ex-meta">{e["meta"]}</p><div class="ex-btns">'
-                f'<a class="btn" href="{e["file"]}">Commencer</a></div></article>')
+                f'<a class="btn" href="{e["file"]}">{e.get("btn", "Commencer")}</a></div></article>')
         elif e["file"]:
             exos.append(
                 f'<article class="mode-card ex-card"><img src="{data_uri(e["img"])}" alt="" width="360" height="260">'
@@ -373,31 +382,96 @@ perspective.</p>
 
 
 # ============================================================ exercice 2.1 — toutes les liaisons d'un système réel
+MODES = """<section id="modes" aria-labelledby="modes-t"><h2 class="home-choose" id="modes-t">Choisis ton mode de travail</h2><div class="modes">
+<article class="mode-card"><div class="mc-head"><span class="mc-tag">Mode 1</span><h3>Entraînement</h3></div>
+<ul><li>Chaque étude se valide seule : la correction s'affiche aussitôt.</li><li>La note s'actualise au fil des études.</li></ul>
+<button type="button" class="btn" data-mode="training">Commencer l'entraînement</button></article>
+<article class="mode-card exam"><div class="mc-head"><span class="mc-tag">Mode 2</span><h3>Examen</h3></div>
+<ul><li>Aucune correction pendant la composition ; les réponses restent modifiables.</li><li>Chronomètre en marche ; tout est dévoilé à la remise de la copie.</li></ul>
+<button type="button" class="btn" data-mode="exam">Composer en mode examen</button></article></div>
+<p class="home-note small">Pour changer de mode, recharge la page. Rien n'est enregistré sur l'ordinateur.</p></section>"""
+
+
+def render_etudes(data, tag, titre, sub, back, title, desc):
+    """Page d'exercice commune : en-tête, choix du mode, onglets des études, photo et panneau de questions."""
+    body = f"""<p class="c-top no-print"><a class="btn ghost" href="{back[0]}">{HOUSE} {back[1]}</a></p>
+<div class="home-top home-top-single"><div class="home-top-l"><header class="home-head"><span class="mc-tag">{tag}</span>{pastille("Niveau 1")}
+<h1 id="home-title">{titre}</h1><p class="home-sub">{sub}</p></header></div></div>
+{MODES}
+<div id="travail" hidden><p class="mode-bar"><span id="mode-lab"></span> <a class="small" href="cours-1-1-liaisons-mecaniques.html" target="_blank" rel="noopener">Revoir le cours (nouvel onglet)</a></p>
+<nav id="tabs" class="eo-tabs" role="tablist" aria-label="Études"></nav>
+<div class="eo"><div class="eo-fig"><div class="eo-img"><img id="fig-img" src="" alt="">
+<svg id="ov" aria-hidden="true"><g id="ov-static"></g><g id="ov-move"></g></svg><div id="fig-rep"></div></div>
+<div class="eo-score"><div><span>Questions traitées</span><b id="sc-q"></b></div><div><span>Note</span><b id="sc-n"></b></div>
+<div class="sc-t"><span>Temps</span><b id="sc-t"></b></div></div></div>
+<div id="etude" class="eo-panel" aria-live="polite"></div></div></div>"""
+    scripts = ("<script>window.__SYSTEME__ = " + json.dumps(data, ensure_ascii=False) + ";</script>\n<script>\n"
+               + (COURS_DIR / "schemas.js").read_text(encoding="utf-8") + "\n"
+               + (SRC / "exercices" / "systeme.js").read_text(encoding="utf-8") + "</script>")
+    return page(title, desc, body, "cours-page", extra_css=(SRC / "exercices" / "systeme.css").read_text(encoding="utf-8"), scripts=scripts)
+
+
+ROUGE_BLEU = " La pièce étudiée est en <b class=\"r\">rouge</b>, la pièce de référence en <b class=\"b\">bleu</b>."
+
+
 def render_systeme(x):
     data = {"images": {k: {"src": data_uri(v["file"]), "w": v["w"], "h": v["h"], "alt": v["alt"], "rep": v["rep"],
                            "zones": v["zones"]} for k, v in x["images"].items()},
             "etudes": x["etudes"], "graphe": x["graphe"], "retenir": x["retenir"]}
-    body = f"""<p class="c-top no-print"><a class="btn ghost" href="index.html">{HOUSE} Accueil</a></p>
-<div class="home-top home-top-single"><div class="home-top-l"><header class="home-head"><span class="mc-tag">Exercice 2.1 · Système {x["num"]}</span>{pastille("Niveau 1")}
-<h1 id="home-title">{x["titre"]} : étude de toutes ses liaisons</h1>
-<p class="home-sub">{x["intro"]} Pour chaque liaison : remplis le tableau des mobilités, nomme la liaison et son axe, puis choisis son
-schéma. La pièce étudiée est en <b class="r">rouge</b>, la pièce de référence en <b class="b">bleu</b>.</p></header></div></div>
-<nav id="tabs" class="eo-tabs" role="tablist" aria-label="Études"></nav>
-<div class="eo"><div class="eo-fig"><div class="eo-img"><img id="fig-img" src="" alt="">
-<svg id="ov" aria-hidden="true"><g id="ov-static"></g><g id="ov-move"></g></svg><div id="fig-rep"></div></div>
-<div class="eo-score"><div><span>Questions traitées</span><b id="sc-q"></b></div><div><span>Note</span><b id="sc-n"></b></div></div></div>
-<div id="etude" class="eo-panel" aria-live="polite"></div></div>"""
-    scripts = ("<script>window.__SYSTEME__ = " + json.dumps(data, ensure_ascii=False) + ";</script>\n<script>\n"
-               + (COURS_DIR / "schemas.js").read_text(encoding="utf-8") + "\n"
-               + (SRC / "exercices" / "systeme.js").read_text(encoding="utf-8") + "</script>")
-    return page(f"Exercice 2.1 — {x['titre']}", f"Exercice interactif : toutes les liaisons — {x['titre'].lower()}.",
-                body, "cours-page", extra_css=(SRC / "exercices" / "systeme.css").read_text(encoding="utf-8"), scripts=scripts)
+    return render_etudes(data, f"Exercice 2.1 · Système {x['num']}", f"{x['titre']} : étude de toutes ses liaisons",
+                         x["intro"] + " Pour chaque liaison : tableau des mobilités, nom et axe, puis schéma." + ROUGE_BLEU,
+                         ("index.html", "Accueil"), f"Exercice 2.1 — {x['titre']}",
+                         f"Exercice interactif : toutes les liaisons — {x['titre'].lower()}.")
+
+
+def render_serie(se):
+    n = se["num"]
+    images, etudes = {}, []
+    for k, x in enumerate(se["systemes"]):
+        images[f"p{k}"] = {"src": data_uri(x["img"]), "w": x["w"], "h": x["h"], "alt": x["alt"], "rep": None, "zones": {}}
+        for e in x["etudes"]:
+            titre = e["titre"].replace("Étude du mouvement", "Mouvement").replace("Étude de la liaison", "Liaison")
+            etudes.append({"img": f"p{k}", "sys": x["titre"], "titre": titre[0].upper() + titre[1:],
+                           "consigne": e["titre"] + ".", "mob": e["mob"], "ddl": e["ddl"], "nom": e["nom"], "axe": e["axe"],
+                           "why": e["why"].replace("Dans la fiche C2", "Dans le tableau des liaisons du cours")
+                                          .replace("de la fiche C2", "du tableau des liaisons du cours")})
+    nsys, net, mins = serie_stats(se)
+    nom, _ = SERIES_TXT[n]
+    data = {"images": images, "etudes": etudes, "compact": True, "minutes": mins,
+            "retour": "exercice-1-degres-de-liberte.html", "retourTxt": "Choisir une autre série"}
+    return render_etudes(data, f"Exercice 1.1 · Série {n}", f"Degrés de liberté — série {n} : {nom.lower()}",
+                         f"{nsys} systèmes, {net} études, environ {mins} min. Pour chaque étude : tableau des mobilités, "
+                         "nombre de degrés de liberté, nom et axe de la liaison. Le repère est indiqué sur chaque photo.",
+                         ("exercice-1-degres-de-liberte.html", "Les séries"), f"Exercice 1.1 — Degrés de liberté, série {n}",
+                         f"Exercice interactif : degrés de liberté, série {n}.")
+
+
+def render_series_hub():
+    cards = []
+    for se in SERIES:
+        n = se["num"]; nsys, net, mins = serie_stats(se); nom, txt = SERIES_TXT[n]
+        cards.append(f'<article class="mode-card ex-card"><img src="{data_uri(f"serie-{n}.jpg")}" alt="">'
+                     f'<div class="mc-head"><span class="mc-tag">Série {n}</span><h3>{nom}</h3></div><p>{txt}</p>'
+                     f'<p class="small ex-meta">{nsys} systèmes · {net} études · {mins} min</p><div class="ex-btns">'
+                     f'<a class="btn" href="{serie_file(n)}#entrainement">Entraînement</a>'
+                     f'<a class="btn btn-ex" href="{serie_file(n)}#examen">Examen</a></div></article>')
+    body = (f'<p class="c-top no-print"><a class="btn ghost" href="index.html">{HOUSE} Accueil</a></p>'
+            f'<div class="home-top home-top-single"><div class="home-top-l"><header class="home-head"><span class="mc-tag">Exercice 1.1</span>'
+            f'{pastille("Niveau 1")}<h1 id="home-title">Degrés de liberté</h1><p class="home-sub">Pour chaque système : repère les '
+            'mouvements possibles d\'une pièce par rapport à l\'autre, compte les degrés de liberté, puis nomme la liaison et '
+            'son axe. Choisis une série, puis ton mode de travail.</p></header></div></div>'
+            f'<h2 class="home-choose">Les séries</h2><div class="ex-grid">{"".join(cards)}</div>'
+            '<p class="home-note small">Entraînement : correction après chaque étude. Examen : chronomètre, correction à la '
+            'remise de la copie. Besoin d\'un rappel ? <a href="cours-1-1-liaisons-mecaniques.html">Cours 1.1 — Les liaisons mécaniques</a>.</p>')
+    return page("Exercice 1.1 — Degrés de liberté", "Exercice interactif sur les degrés de liberté : trois séries.", body, "hub")
 
 
 def build():
     sch = schemas()
     out = {"index.html": render_hub(sch), COURS[0]["file"]: render_cours_liaisons(),
-           **{f"exercice-2-{x['slug']}.html": render_systeme(x) for x in SYSTEMES}}
+           **{f"exercice-2-{x['slug']}.html": render_systeme(x) for x in SYSTEMES},
+           "exercice-1-degres-de-liberte.html": render_series_hub(),
+           **{serie_file(se["num"]): render_serie(se) for se in SERIES}}
     for c in COURS[1:]:
         out[c["file"]] = render_en_edition(c)
     for name, text in out.items():

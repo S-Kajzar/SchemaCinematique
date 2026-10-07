@@ -9,7 +9,8 @@ GitHub Pages. L'accueil reprend la construction du dépôt RDM : une grille « L
 | `index.html` | accueil : grille des cours, grille des exercices |
 | `cours-1-1-liaisons-mecaniques.html` | Cours 1.1 — Les liaisons mécaniques (Niveau 1), interactif |
 | `cours-1-2-…`, `cours-2-1-…`, `cours-2-2-…` | cours 1.2 (Niveau 2), 2.1 et 2.2 (schéma cinématique) — « En cours d'édition » |
-| `exercice-1-degres-de-liberte-serie-1.html` … `serie-3.html` | Exercice 1.1 — Degrés de liberté (Niveau 1), séries 1 à 3 (inchangées) |
+| `exercice-1-degres-de-liberte.html` | Exercice 1.1 — Degrés de liberté (Niveau 1) : choix de la série |
+| `exercice-1-degres-de-liberte-serie-1.html` … `serie-3.html` | séries 1 à 3, sur le même moteur que l'exercice 2.1 |
 | `exercice-2-eolienne.html`, `-support-smartphone`, `-imprimante-3d`, `-grue-camera` | Exercice 2.1 — toutes les liaisons d'un système réel (Niveau 1) |
 
 ## Cours 1.1 — Les liaisons mécaniques (Niveau 1)
@@ -35,6 +36,15 @@ Choix et compléments par rapport au cours d'origine :
   rotation Rz bloquée.
 - Ajouts : exemples de la vie courante pour chaque liaison, exemple résolu de la porte, jeu et quiz.
 
+## Exercice 1.1 — Degrés de liberté
+
+Une seule carte sur l'accueil, puis le choix de la série (application, révision, évaluation) et du mode. Les séries
+utilisent le moteur de l'exercice 2.1 : onglets numérotés des études, photo à gauche, tableau des mobilités cliquable,
+nombre de ddl, nom et axe de la liaison, correction rédigée d'origine, bilan par étude. Mode examen : chronomètre,
+réponses modifiables, correction et note à la remise de la copie. Les énoncés, réponses et corrections ont été extraits
+une fois des anciennes pages par `src/exercices/extraire_series.py` vers `src/exercices/series.json` (photos dans
+`src/images/series/`). Changement : l'axe de la liaison est désormais demandé (1 point), comme dans l'exercice 2.1.
+
 ## Exercice 2.1 — toutes les liaisons d'un système réel
 
 Une page par système (éolienne, support de smartphone, imprimante 3D, grue de tournage). Pour chaque liaison :
@@ -50,7 +60,7 @@ est rejoué sur la photo, la note sur 20 se met à jour et le bilan trace le gra
 python3 src/generer.py   # écrit index.html, le cours 1.1 et les pages « en cours d'édition » (Node requis)
 ```
 
-La charte (bloc de style) est lue dans la page d'exercice de la série 1, pour rester identique aux exercices.
+La charte (bloc de style des exercices d'origine) est dans `src/charte.css`.
 
 ## Tester
 
