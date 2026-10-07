@@ -1,0 +1,1004 @@
+[
+ {
+  "num": 1,
+  "titre": "Degrés de liberté — série 1 : application",
+  "systemes": [
+   {
+    "titre": "Caisson à tiroir",
+    "minutes": 4,
+    "img": "series/s1-p01.jpg",
+    "alt": "Caisson à tiroir : photo légendée et repère des axes",
+    "w": 720,
+    "h": 454,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement du tiroir par rapport au caisson",
+      "mob": [
+       1,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Glissière",
+      "axe": "x",
+      "attendu": "Glissière d'axe x — 1 ddl (Tx)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le tiroir s'ouvre et se ferme en coulissant suivant l'axe x, perpendiculaire à la façade : <strong>Tx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Les coulisses latérales l'empêchent de monter ou de descendre (Tz), de se décaler sur le côté (Ty) et de pivoter autour de n'importe quel axe : Ty = Tz = Rx = Ry = Rz = 0.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 1 translation et 0 rotation correspondent à la liaison <strong>glissière</strong> d'axe x.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Lave-vaisselle",
+    "minutes": 4,
+    "img": "series/s1-p02.jpg",
+    "alt": "Lave-vaisselle : photo légendée et repère des axes",
+    "w": 720,
+    "h": 592,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement de la porte par rapport au carter",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe x — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> La porte bascule vers l'avant autour de ses charnières, placées en bas de la façade et alignées sur sa largeur, suivant l'axe x : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Les charnières l'empêchent de glisser dans quelque direction que ce soit et de tourner autour de y ou de z : les cinq autres mouvements valent 0.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe x.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Clé USB",
+    "minutes": 4,
+    "img": "series/s1-p03.jpg",
+    "alt": "Clé USB : photo légendée et repère des axes",
+    "w": 720,
+    "h": 461,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement de la clé par rapport à l'étui",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       1
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "z",
+      "attendu": "Pivot d'axe z — 1 ddl (Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> L'étui pivote autour du bouton rond, dont l'axe est perpendiculaire à la face plate de la clé, donc vertical : <strong>Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Le rivet du bouton interdit toute translation, et la clé reste plaquée contre l'étui : elle ne peut basculer ni autour de x ni autour de y.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Vanne",
+    "minutes": 4,
+    "img": "series/s1-p04.jpg",
+    "alt": "Vanne : photo légendée et repère des axes",
+    "w": 676,
+    "h": 420,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement du levier par rapport au corps",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       1
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "z",
+      "attendu": "Pivot d'axe z — 1 ddl (Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le levier tourne autour de la tige verticale de la vanne pour ouvrir ou fermer le passage : <strong>Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> L'écrou qui le serre sur la tige interdit toute translation, et la tige l'empêche de basculer autour de x ou de y.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Mercedes C111",
+    "minutes": 4,
+    "img": "series/s1-p05.jpg",
+    "alt": "Mercedes C111 : photo légendée et repère des axes",
+    "w": 720,
+    "h": 450,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement de la portière par rapport à la voiture",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe x — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> La portière « papillon » s'ouvre vers le haut en tournant autour de ses charnières, fixées au milieu du toit dans le sens de la longueur de la voiture, suivant l'axe x : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Les charnières bloquent les trois translations et les rotations autour de y et de z.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe x.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Interrupteur bistable",
+    "minutes": 4,
+    "img": "series/s1-p06.jpg",
+    "alt": "Interrupteur bistable : photo légendée et repère des axes",
+    "w": 720,
+    "h": 640,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement du levier par rapport au corps",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       1,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "y",
+      "attendu": "Pivot d'axe y — 1 ddl (Ry)",
+      "why": "<p><strong>Mouvements possibles.</strong> Les repères ON et OFF sont placés aux deux extrémités de la platine, alignés suivant x : le levier bascule de l'un à l'autre dans le plan (x, z), donc en tournant autour de l'axe y : <strong>Ry = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Son axe d'articulation, logé dans le corps, interdit toute translation et les rotations autour de x et de z.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe y.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Caméra pour robot",
+    "minutes": 4,
+    "img": "series/s1-p07.jpg",
+    "alt": "Caméra pour robot : photo légendée et repère des axes",
+    "w": 720,
+    "h": 484,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement de la caméra par rapport au socle",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       1,
+       1
+      ],
+      "ddl": 3,
+      "nom": "Rotule",
+      "axe": "-",
+      "attendu": "Sphérique (rotule) — 3 ddl (Rx, Ry, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> La caméra est reliée au socle par une articulation en boule (la rotule noire au pied de la tige) : on peut l'orienter dans toutes les directions, <strong>Rx = Ry = Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> La boule est emprisonnée dans son logement : aucune translation n'est possible.</p><p><strong>Bilan.</strong> 3 mouvements possibles : <strong>3 ddl</strong>. Dans la fiche C2, 0 translation et 3 rotations correspondent à la liaison <strong>sphérique (rotule)</strong>.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Rétroviseur de voiture",
+    "minutes": 4,
+    "img": "series/s1-p08.jpg",
+    "alt": "Rétroviseur de voiture : photo légendée et repère des axes",
+    "w": 720,
+    "h": 364,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement du miroir par rapport au rétroviseur",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       1,
+       1
+      ],
+      "ddl": 2,
+      "nom": "Rotule à doigt",
+      "axe": "-",
+      "attendu": "Sphérique à doigt — 2 ddl (Ry, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le miroir s'oriente vers la gauche ou la droite (rotation autour de z) et vers le haut ou le bas (rotation autour de y, axe horizontal dans le plan de la glace) : <strong>Ry = Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Il ne peut pas tourner dans son propre plan, autour de l'axe x perpendiculaire à la glace : l'image basculerait. Aucune translation n'est possible.</p><p>Deux rotations seulement, là où une rotule en autoriserait trois : c'est le « doigt » qui bloque la troisième.</p><p><strong>Bilan.</strong> 2 mouvements possibles : <strong>2 ddl</strong>. Dans la fiche C2, 0 translation et 2 rotations correspondent à la liaison <strong>sphérique à doigt</strong>.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Souris sur tapis",
+    "minutes": 4,
+    "img": "series/s1-p09.jpg",
+    "alt": "Souris sur tapis : photo légendée et repère des axes",
+    "w": 720,
+    "h": 606,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement de la souris par rapport au tapis (la souris reste plaquée sur le tapis : contact plan sur plan)",
+      "mob": [
+       1,
+       1,
+       0,
+       0,
+       0,
+       1
+      ],
+      "ddl": 3,
+      "nom": "Appui plan",
+      "axe": "z",
+      "attendu": "Appui plan de normale z — 3 ddl (Tx, Ty, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Plaquée sur le tapis, la souris glisse dans le plan horizontal (<strong>Tx = Ty = 1</strong>) et peut pivoter sur elle-même autour de la verticale (<strong>Rz = 1</strong>).</p><p><strong>Mouvements impossibles.</strong> Le contact plan sur plan l'empêche de s'enfoncer dans le tapis ou de s'en décoller (Tz = 0) et de basculer autour de x ou de y (Rx = Ry = 0).</p><p><strong>Bilan.</strong> 3 mouvements possibles : <strong>3 ddl</strong>. Dans la fiche C2, 2 translations et 1 rotation correspondent à la liaison <strong>appui plan</strong> de normale z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Rétroviseur de moto",
+    "minutes": 4,
+    "img": "series/s1-p10.jpg",
+    "alt": "Rétroviseur de moto : photo légendée et repère des axes",
+    "w": 720,
+    "h": 471,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement du miroir par rapport au bras",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       1,
+       1
+      ],
+      "ddl": 3,
+      "nom": "Rotule",
+      "axe": "-",
+      "attendu": "Sphérique (rotule) — 3 ddl (Rx, Ry, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le zoom montre l'extrémité du bras, terminée par une boule prise dans un logement à l'arrière du miroir : c'est une rotule. Le miroir peut tourner autour des trois axes : <strong>Rx = Ry = Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> La boule ne peut pas sortir de son logement : les trois translations sont impossibles.</p><p><strong>Bilan.</strong> 3 mouvements possibles : <strong>3 ddl</strong>. Dans la fiche C2, 0 translation et 3 rotations correspondent à la liaison <strong>sphérique (rotule)</strong>.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Piston dans cylindre",
+    "minutes": 4,
+    "img": "series/s1-p11.jpg",
+    "alt": "Piston dans cylindre : photo légendée et repère des axes",
+    "w": 720,
+    "h": 442,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement du piston par rapport au cylindre",
+      "mob": [
+       0,
+       0,
+       1,
+       0,
+       0,
+       1
+      ],
+      "ddl": 2,
+      "nom": "Pivot glissant",
+      "axe": "z",
+      "attendu": "Pivot glissant d'axe z — 2 ddl (Tz, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le piston monte et descend dans le cylindre suivant l'axe z (<strong>Tz = 1</strong>) ; le contact cylindrique ne l'empêche pas de tourner autour de ce même axe (<strong>Rz = 1</strong>).</p><p><strong>Mouvements impossibles.</strong> La paroi du cylindre interdit les déplacements latéraux (Tx, Ty) et le basculement (Rx, Ry).</p><p>Dans le moteur, c'est la bielle qui empêche la rotation du piston, mais on étudie ici la seule liaison entre le piston et le cylindre.</p><p><strong>Bilan.</strong> 2 mouvements possibles : <strong>2 ddl</strong>. Dans la fiche C2, 1 translation et 1 rotation correspondent à la liaison <strong>pivot glissant</strong> d'axe z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Étau pour moto",
+    "minutes": 8,
+    "img": "series/s1-p12.jpg",
+    "alt": "Étau pour moto : photo légendée et repère des axes",
+    "w": 720,
+    "h": 671,
+    "etudes": [
+     {
+      "titre": "Étude du mouvement de la vis par rapport à la partie fixe",
+      "mob": [
+       1,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Hélicoïdale",
+      "axe": "x",
+      "attendu": "Hélicoïdale d'axe x — 1 ddl (Tx, Rx liées)",
+      "why": "<p><strong>Mouvements possibles.</strong> Quand on tourne le volant, la vis tourne autour de l'axe x (<strong>Rx = 1</strong>) et, grâce au filetage, avance ou recule en même temps suivant x (<strong>Tx = 1</strong>).</p><p><strong>Mouvements impossibles.</strong> Le taraudage bloque tous les autres mouvements.</p><p>Translation et rotation sont <strong>liées</strong> par le filetage : on ne peut pas avancer sans tourner. Le tableau porte deux 1, mais il n'y a qu'<strong>un seul degré de liberté</strong> : c'est le « 1 + 1 » de la fiche C2.</p><p><strong>Bilan.</strong> Une translation et une rotation liées : <strong>1 ddl</strong>. Dans la fiche C2, la ligne « 1 + 1 » est celle de la liaison <strong>hélicoïdale</strong> d'axe x.</p>"
+     },
+     {
+      "titre": "Étude du mouvement du mors mobile par rapport à la partie fixe",
+      "mob": [
+       1,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Glissière",
+      "axe": "x",
+      "attendu": "Glissière d'axe x — 1 ddl (Tx)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le mors mobile est guidé par les deux tiges parallèles : il ne peut que coulisser suivant x pour serrer ou desserrer la roue, <strong>Tx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Deux guides parallèles empêchent toute rotation, y compris autour de x (une seule tige ne l'empêcherait pas), et toute translation suivant y ou z.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 1 translation et 0 rotation correspondent à la liaison <strong>glissière</strong> d'axe x.</p>"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": 2,
+  "titre": "Degrés de liberté — série 2 : révision",
+  "systemes": [
+   {
+    "titre": "Repose-pied",
+    "minutes": 4,
+    "img": "series/s2-p01.jpg",
+    "alt": "Repose-pied : photo légendée et repère des axes",
+    "w": 700,
+    "h": 546,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la partie fixe et la partie mobile",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       1
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "z",
+      "attendu": "Pivot d'axe Z — 1 ddl (Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> La partie mobile se replie vers le haut en tournant autour de l'axe qui traverse la chape, perpendiculaire à sa face avant, donc suivant Z : <strong>Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Cet axe traverse les deux flasques de la chape : aucune translation n'est possible et la partie mobile ne peut pas tourner autour de X ou de Y.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe Z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Pédale d'accélérateur",
+    "minutes": 4,
+    "img": "series/s2-p02.jpg",
+    "alt": "Pédale d'accélérateur : photo légendée et repère des axes",
+    "w": 720,
+    "h": 523,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la partie fixe et la partie mobile",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       1
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "z",
+      "attendu": "Pivot d'axe Z — 1 ddl (Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> La pédale s'enfonce en tournant autour de l'axe de son articulation, en haut de la partie fixe, orienté suivant Z : <strong>Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> L'articulation bloque les trois translations et les rotations autour de X et de Y.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe Z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Pied à coulisse",
+    "minutes": 8,
+    "img": "series/s2-p03.jpg",
+    "alt": "Pied à coulisse : photo légendée et repère des axes",
+    "w": 720,
+    "h": 395,
+    "etudes": [
+     {
+      "titre": "Cas n° 1 : la vis de pression n'appuie pas sur la partie fixe",
+      "mob": [
+       1,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Glissière",
+      "axe": "x",
+      "attendu": "Glissière d'axe X — 1 ddl (Tx)",
+      "why": "<p><strong>Mouvements possibles.</strong> Vis desserrée, la partie mobile (le coulisseau) se déplace le long de la règle, suivant X : <strong>Tx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> La règle est emprisonnée dans le coulisseau, dont la forme empêche tout autre mouvement.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 1 translation et 0 rotation correspondent à la liaison <strong>glissière</strong> d'axe X.</p>"
+     },
+     {
+      "titre": "Cas n° 2 : la vis de pression appuie sur la partie fixe",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "ddl": 0,
+      "nom": "Encastrement",
+      "axe": "-",
+      "attendu": "Encastrement (liaison fixe ou complète) — 0 ddl",
+      "why": "<p><strong>Mouvements possibles.</strong> Vis serrée, le coulisseau est immobilisé sur la règle : plus aucun mouvement n'est possible.</p><p><strong>Mouvements impossibles.</strong> Les six cases valent 0.</p><p>C'est le même guidage que dans le cas n° 1 : la vis de pression supprime le dernier degré de liberté et transforme la glissière en encastrement.</p><p><strong>Bilan.</strong> Aucun mouvement possible : <strong>0 ddl</strong>. Dans la fiche C2, 0 translation et 0 rotation correspondent à l'<strong>encastrement</strong> (liaison fixe ou complète).</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Extracteur",
+    "minutes": 8,
+    "img": "series/s2-p04.jpg",
+    "alt": "Extracteur : photo légendée et repère des axes",
+    "w": 680,
+    "h": 840,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la vis et le corps",
+      "mob": [
+       0,
+       1,
+       0,
+       0,
+       1,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Hélicoïdale",
+      "axe": "y",
+      "attendu": "Hélicoïdale d'axe Y — 1 ddl (Ty, Ry liées)",
+      "why": "<p><strong>Mouvements possibles.</strong> La vis traverse le corps par un trou taraudé : en la tournant autour de Y (<strong>Ry = 1</strong>), elle descend ou monte en même temps suivant Y (<strong>Ty = 1</strong>).</p><p><strong>Mouvements impossibles.</strong> Le filetage bloque tous les autres mouvements.</p><p>Translation et rotation sont <strong>liées</strong> par le filetage : on ne peut pas avancer sans tourner. Le tableau porte deux 1, mais il n'y a qu'<strong>un seul degré de liberté</strong> : c'est le « 1 + 1 » de la fiche C2.</p><p><strong>Bilan.</strong> Une translation et une rotation liées : <strong>1 ddl</strong>. Dans la fiche C2, la ligne « 1 + 1 » est celle de la liaison <strong>hélicoïdale</strong> d'axe Y.</p>"
+     },
+     {
+      "titre": "Étude de la liaison entre la griffe et le corps",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe X — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> Chaque griffe est suspendue au corps par un boulon dont l'axe est orienté vers l'avant, suivant X : elle peut s'écarter ou se refermer en tournant autour de cet axe, <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Le boulon interdit les translations, et le corps, entre les flasques duquel la griffe est prise, l'empêche de tourner autour de Y ou de Z.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe X.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Voiture et caravane",
+    "minutes": 4,
+    "img": "series/s2-p05.jpg",
+    "alt": "Voiture et caravane : photo légendée et repère des axes",
+    "w": 680,
+    "h": 470,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la caravane et la voiture",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       1,
+       1
+      ],
+      "ddl": 3,
+      "nom": "Rotule",
+      "axe": "-",
+      "attendu": "Sphérique (rotule) — 3 ddl (Rx, Ry, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> La caravane est accrochée à une boule d'attelage : elle suit la voiture dans les virages, les bosses et les dévers, c'est-à-dire qu'elle tourne autour des trois axes : <strong>Rx = Ry = Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> La boule est emprisonnée dans la tête d'attelage : aucune translation n'est possible, sinon la caravane se détacherait.</p><p><strong>Bilan.</strong> 3 mouvements possibles : <strong>3 ddl</strong>. Dans la fiche C2, 0 translation et 3 rotations correspondent à la liaison <strong>sphérique (rotule)</strong>.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Compteur de vitesse",
+    "minutes": 4,
+    "img": "series/s2-p06.jpg",
+    "alt": "Compteur de vitesse : photo légendée et repère des axes",
+    "w": 680,
+    "h": 450,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre l'aiguille et le compteur",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe X — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le cadran est dans le plan (Y, Z) : l'aiguille tourne autour de son axe central, perpendiculaire au cadran, donc suivant X : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Elle est emmanchée sur cet axe : aucune translation, et aucune rotation autour de Y ou de Z (elle frotterait sur le cadran).</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe X.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Caméra extérieure : support et base",
+    "minutes": 4,
+    "img": "series/s2-p07.jpg",
+    "alt": "Caméra extérieure : support et base : photo légendée et repère des axes",
+    "w": 570,
+    "h": 460,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre le support caméra et la base",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       1
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "z",
+      "attendu": "Pivot d'axe z — 1 ddl (Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le support tourne sur la base autour de l'axe vertical z pour balayer l'horizon (mouvement panoramique) : <strong>Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Tous les autres mouvements sont bloqués.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Caméra extérieure : caméra et support",
+    "minutes": 4,
+    "img": "series/s2-p08.jpg",
+    "alt": "Caméra extérieure : caméra et support : photo légendée et repère des axes",
+    "w": 580,
+    "h": 500,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la caméra et le support caméra",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       1,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "y",
+      "attendu": "Pivot d'axe y — 1 ddl (Ry)",
+      "why": "<p><strong>Mouvements possibles.</strong> La caméra s'incline vers le haut ou vers le bas en tournant autour de l'axe horizontal y, parallèle à sa largeur : <strong>Ry = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Aucune translation, et aucune rotation autour de x ou de z par rapport au support.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe y.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Caméra extérieure : essuie-glace",
+    "minutes": 4,
+    "img": "series/s2-p09.jpg",
+    "alt": "Caméra extérieure : essuie-glace : photo légendée et repère des axes",
+    "w": 660,
+    "h": 520,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre l'essuie-glace et la caméra",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe x — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> L'essuie-glace balaie la vitre en tournant autour d'un axe perpendiculaire à celle-ci, orienté vers l'avant, suivant x : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Il reste plaqué sur la vitre : aucune translation et aucune autre rotation.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe x.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Drone",
+    "minutes": 4,
+    "img": "series/s2-p10.jpg",
+    "alt": "Drone : photo légendée et repère des axes",
+    "w": 720,
+    "h": 454,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre l'hélice et le corps",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       1
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "z",
+      "attendu": "Pivot d'axe z — 1 ddl (Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> L'hélice tourne autour de l'arbre vertical de son moteur, suivant z : <strong>Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Elle est fixée sur cet arbre : aucune translation, et elle ne peut pas basculer autour de x ou de y.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Ordinateur portable",
+    "minutes": 4,
+    "img": "series/s2-p11.jpg",
+    "alt": "Ordinateur portable : photo légendée et repère des axes",
+    "w": 720,
+    "h": 503,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre l'écran et le clavier",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe x — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> L'écran s'ouvre et se ferme en tournant autour de ses charnières, alignées sur la largeur de l'ordinateur, suivant x : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Les charnières bloquent les translations et les rotations autour de y et de z.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe x.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Panneau de signalisation",
+    "minutes": 4,
+    "img": "series/s2-p12.jpg",
+    "alt": "Panneau de signalisation : photo légendée et repère des axes",
+    "w": 700,
+    "h": 640,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre le panneau et le poteau",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "ddl": 0,
+      "nom": "Encastrement",
+      "axe": "-",
+      "attendu": "Encastrement (liaison fixe ou complète) — 0 ddl",
+      "why": "<p><strong>Mouvements possibles.</strong> Le panneau est serré sur le poteau par deux colliers boulonnés : aucun mouvement n'est possible.</p><p><strong>Mouvements impossibles.</strong> Les six cases valent 0.</p><p><strong>Bilan.</strong> Aucun mouvement possible : <strong>0 ddl</strong>. Dans la fiche C2, 0 translation et 0 rotation correspondent à l'<strong>encastrement</strong> (liaison fixe ou complète).</p>"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": 3,
+  "titre": "Degrés de liberté — série 3 : évaluation",
+  "systemes": [
+   {
+    "titre": "Plaque d'immatriculation",
+    "minutes": 4,
+    "img": "series/s3-p01.jpg",
+    "alt": "Plaque d'immatriculation : photo légendée et repère des axes",
+    "w": 720,
+    "h": 412,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la plaque et le pare-chocs",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "ddl": 0,
+      "nom": "Encastrement",
+      "axe": "-",
+      "attendu": "Encastrement (liaison fixe ou complète) — 0 ddl",
+      "why": "<p><strong>Mouvements possibles.</strong> La plaque est vissée (ou rivetée) sur le pare-chocs : aucun mouvement n'est possible.</p><p><strong>Mouvements impossibles.</strong> Les six cases valent 0.</p><p><strong>Bilan.</strong> Aucun mouvement possible : <strong>0 ddl</strong>. Dans la fiche C2, 0 translation et 0 rotation correspondent à l'<strong>encastrement</strong> (liaison fixe ou complète).</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Levier de frein",
+    "minutes": 4,
+    "img": "series/s3-p02.jpg",
+    "alt": "Levier de frein : photo légendée et repère des axes",
+    "w": 680,
+    "h": 550,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre le levier et le corps",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       1,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "y",
+      "attendu": "Pivot d'axe Y — 1 ddl (Ry)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le levier pivote autour de sa vis d'articulation, verticale (suivant Y), pour venir vers la poignée : <strong>Ry = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> La vis bloque les translations ; le levier ne peut pas basculer autour de X ou de Z.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe Y.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Assise de siège auto",
+    "minutes": 4,
+    "img": "series/s3-p03.jpg",
+    "alt": "Assise de siège auto : photo légendée et repère des axes",
+    "w": 720,
+    "h": 660,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre l'assise du siège et le bâti",
+      "mob": [
+       0,
+       0,
+       1,
+       0,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Glissière",
+      "axe": "z",
+      "attendu": "Glissière d'axe Z — 1 ddl (Tz)",
+      "why": "<p><strong>Mouvements possibles.</strong> L'assise avance ou recule le long des rails de guidage, orientés suivant Z : <strong>Tz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Les deux rails parallèles interdisent tout autre mouvement.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 1 translation et 0 rotation correspondent à la liaison <strong>glissière</strong> d'axe Z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Support de GPS",
+    "minutes": 4,
+    "img": "series/s3-p04.jpg",
+    "alt": "Support de GPS : photo légendée et repère des axes",
+    "w": 700,
+    "h": 576,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre le support de GPS et la ventouse",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       1,
+       1
+      ],
+      "ddl": 3,
+      "nom": "Rotule",
+      "axe": "-",
+      "attendu": "Sphérique (rotule) — 3 ddl (Rx, Ry, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le support se clipse sur une boule, au bout du bras de la ventouse : c'est une rotule. On peut l'orienter autour des trois axes : <strong>Rx = Ry = Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> La boule reste prisonnière de son logement : aucune translation n'est possible.</p><p><strong>Bilan.</strong> 3 mouvements possibles : <strong>3 ddl</strong>. Dans la fiche C2, 0 translation et 3 rotations correspondent à la liaison <strong>sphérique (rotule)</strong>.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Scie sauteuse",
+    "minutes": 4,
+    "img": "series/s3-p05.jpg",
+    "alt": "Scie sauteuse : photo légendée et repère des axes",
+    "w": 720,
+    "h": 567,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la lame et le carter",
+      "mob": [
+       0,
+       0,
+       1,
+       0,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Glissière",
+      "axe": "z",
+      "attendu": "Glissière d'axe z — 1 ddl (Tz)",
+      "why": "<p><strong>Mouvements possibles.</strong> La lame fait un mouvement de va-et-vient vertical, suivant z : <strong>Tz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Elle est serrée dans un porte-lame guidé : aucun autre mouvement n'est possible.</p><p>Certaines scies ajoutent un mouvement pendulaire à la lame ; on le néglige ici.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 1 translation et 0 rotation correspondent à la liaison <strong>glissière</strong> d'axe z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Scie circulaire",
+    "minutes": 4,
+    "img": "series/s3-p06.jpg",
+    "alt": "Scie circulaire : photo légendée et repère des axes",
+    "w": 720,
+    "h": 449,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la lame et le carter",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe x — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> La lame tourne avec l'arbre du moteur, perpendiculaire à son plan et orienté suivant x : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Elle est serrée sur cet arbre : aucune translation, aucune autre rotation.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe x.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Vilebrequin et bielle",
+    "minutes": 4,
+    "img": "series/s3-p07.jpg",
+    "alt": "Vilebrequin et bielle : photo légendée et repère des axes",
+    "w": 670,
+    "h": 520,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre le vilebrequin et la bielle",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe x — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> La tête de bielle tourne autour du maneton du vilebrequin, parallèle à l'axe du vilebrequin, donc suivant x : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Les flasques du vilebrequin l'empêchent de glisser le long du maneton, et le contact cylindrique interdit les autres mouvements.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe x.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Rétroviseur électrique",
+    "minutes": 4,
+    "img": "series/s3-p08.jpg",
+    "alt": "Rétroviseur électrique : photo légendée et repère des axes",
+    "w": 720,
+    "h": 364,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre le miroir et le rétroviseur",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       1,
+       1
+      ],
+      "ddl": 2,
+      "nom": "Rotule à doigt",
+      "axe": "-",
+      "attendu": "Sphérique à doigt — 2 ddl (Ry, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Les moteurs orientent le miroir vers la gauche ou la droite (rotation autour de z) et vers le haut ou le bas (rotation autour de y) : <strong>Ry = Rz = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Le miroir ne peut pas tourner dans son propre plan, autour de l'axe x perpendiculaire à la glace, et aucune translation n'est possible.</p><p>Deux rotations seulement, là où une rotule en autoriserait trois : c'est le « doigt » qui bloque la troisième.</p><p><strong>Bilan.</strong> 2 mouvements possibles : <strong>2 ddl</strong>. Dans la fiche C2, 0 translation et 2 rotations correspondent à la liaison <strong>sphérique à doigt</strong>.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Piston dans cylindre",
+    "minutes": 4,
+    "img": "series/s3-p09.jpg",
+    "alt": "Piston dans cylindre : photo légendée et repère des axes",
+    "w": 720,
+    "h": 452,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre le piston et le cylindre",
+      "mob": [
+       0,
+       0,
+       1,
+       0,
+       0,
+       1
+      ],
+      "ddl": 2,
+      "nom": "Pivot glissant",
+      "axe": "z",
+      "attendu": "Pivot glissant d'axe z — 2 ddl (Tz, Rz)",
+      "why": "<p><strong>Mouvements possibles.</strong> Le piston monte et descend dans le cylindre suivant l'axe z (<strong>Tz = 1</strong>) ; le contact cylindrique ne l'empêche pas de tourner autour de ce même axe (<strong>Rz = 1</strong>).</p><p><strong>Mouvements impossibles.</strong> La paroi du cylindre interdit les déplacements latéraux (Tx, Ty) et le basculement (Rx, Ry).</p><p>Dans le moteur, c'est la bielle qui empêche la rotation du piston, mais on étudie ici la seule liaison entre le piston et le cylindre.</p><p><strong>Bilan.</strong> 2 mouvements possibles : <strong>2 ddl</strong>. Dans la fiche C2, 1 translation et 1 rotation correspondent à la liaison <strong>pivot glissant</strong> d'axe z.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Ridoir",
+    "minutes": 4,
+    "img": "series/s3-p10.jpg",
+    "alt": "Ridoir : photo légendée et repère des axes",
+    "w": 680,
+    "h": 588,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la tige filetée et le corps",
+      "mob": [
+       0,
+       1,
+       0,
+       0,
+       1,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Hélicoïdale",
+      "axe": "y",
+      "attendu": "Hélicoïdale d'axe y — 1 ddl (Ty, Ry liées)",
+      "why": "<p><strong>Mouvements possibles.</strong> En tournant le corps, la tige filetée s'y visse ou s'en dévisse : elle tourne autour de l'axe y du ridoir (<strong>Ry = 1</strong>) en avançant suivant y (<strong>Ty = 1</strong>).</p><p><strong>Mouvements impossibles.</strong> Le filetage bloque tous les autres mouvements.</p><p>Translation et rotation sont <strong>liées</strong> par le filetage : on ne peut pas avancer sans tourner. Le tableau porte deux 1, mais il n'y a qu'<strong>un seul degré de liberté</strong> : c'est le « 1 + 1 » de la fiche C2.</p><p><strong>Bilan.</strong> Une translation et une rotation liées : <strong>1 ddl</strong>. Dans la fiche C2, la ligne « 1 + 1 » est celle de la liaison <strong>hélicoïdale</strong> d'axe y.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Touret à meuler",
+    "minutes": 4,
+    "img": "series/s3-p11.jpg",
+    "alt": "Touret à meuler : photo légendée et repère des axes",
+    "w": 720,
+    "h": 415,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la meule et le carter",
+      "mob": [
+       0,
+       0,
+       0,
+       0,
+       1,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "y",
+      "attendu": "Pivot d'axe y — 1 ddl (Ry)",
+      "why": "<p><strong>Mouvements possibles.</strong> La meule tourne avec l'arbre du moteur, qui traverse le touret dans sa longueur, suivant y : <strong>Ry = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> L'arbre, guidé par ses roulements, bloque tout autre mouvement.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe y.</p>"
+     }
+    ]
+   },
+   {
+    "titre": "Commande d'aération",
+    "minutes": 4,
+    "img": "series/s3-p12.jpg",
+    "alt": "Commande d'aération : photo légendée et repère des axes",
+    "w": 700,
+    "h": 640,
+    "etudes": [
+     {
+      "titre": "Étude de la liaison entre la molette et le tableau de bord",
+      "mob": [
+       0,
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      "ddl": 1,
+      "nom": "Pivot",
+      "axe": "x",
+      "attendu": "Pivot d'axe x — 1 ddl (Rx)",
+      "why": "<p><strong>Mouvements possibles.</strong> La molette tourne autour de son axe, perpendiculaire à la façade du tableau de bord, donc suivant x : <strong>Rx = 1</strong>.</p><p><strong>Mouvements impossibles.</strong> Elle ne peut ni s'enfoncer, ni sortir, ni basculer.</p><p><strong>Bilan.</strong> 1 mouvement possible : <strong>1 ddl</strong>. Dans la fiche C2, 0 translation et 1 rotation correspondent à la liaison <strong>pivot</strong> d'axe x.</p>"
+     }
+    ]
+   }
+  ]
+ }
+]

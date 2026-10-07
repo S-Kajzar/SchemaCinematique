@@ -52,3 +52,31 @@ label.good{background:var(--vert-pale); color:var(--vert); font-weight:700} labe
 .graphe text{font:600 11px var(--f-texte); text-anchor:middle; fill:var(--encre)}
 .graphe .nd{fill:var(--jaune-pale); stroke:var(--encre); stroke-width:2} .graphe .nt{font:700 14px var(--f-titre)}
 .note-fin{font:700 1.3rem var(--f-titre)}
+
+#modes{margin:0 0 10px}
+.mode-bar{display:flex; gap:14px; align-items:baseline; margin:0 0 8px}
+#mode-lab{font:700 .85rem var(--f-titre); background:var(--jaune); padding:2px 10px}
+body.mode-exam #mode-lab{background:var(--bleu); color:#fff}
+.eo-tabs.compact button{min-width:40px; text-align:center; padding:6px 8px}
+.eo-tabs button.fini{background:var(--jaune-pale)}
+.eo-tabs button.juste{background:var(--vert-pale); border-color:var(--vert)}
+.eo-tabs button.faux{background:var(--rouge-pale); border-color:var(--rouge)}
+.eo-tabs button[aria-selected="true"]{background:var(--encre); color:#fff}
+.eo-tabs button.fini::after{content:""}
+.kicker{margin:0; font:700 .8rem var(--f-titre); text-transform:uppercase; letter-spacing:.04em; color:var(--encre-2)}
+.eo-score{grid-template-columns:1fr 1fr}
+.eo-score .sc-t{grid-column:1/-1}
+.eo-score .sc-t b{font-size:1rem}
+.ddls{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.ddls span{font-weight:600; margin-right:4px}
+.ddl-b{width:40px; padding:6px 0; border:1.5px solid var(--encre); background:#fff; font:700 1.05rem var(--f-titre); cursor:pointer}
+.ddl-b[aria-pressed="true"]{background:var(--jaune)}
+.ddl-b.good{background:var(--vert-pale); border-color:var(--vert); color:var(--vert)} .ddl-b.bad{background:var(--rouge-pale); border-color:var(--rouge); color:var(--rouge)}
+label.picked{background:var(--jaune-pale); font-weight:700}
+.sch-opt.picked{border-color:var(--bleu); background:var(--bleu-pale)}
+.nav{display:flex; gap:8px; justify-content:flex-end; flex-wrap:wrap}
+.btn-ex{background:var(--bleu); border-color:var(--bleu)}
+.btn.confirm{background:var(--rouge); border-color:var(--rouge)}
+.fb .q-why p,.fb>p{margin:0 0 6px}
+.bilan-t td{vertical-align:middle} .bilan-t tr.r-ok td:last-child{color:var(--vert); font-weight:700} .bilan-t tr.r-ko td:last-child{color:var(--rouge); font-weight:700}
+.eo-img img{max-height:70vh; object-fit:contain}

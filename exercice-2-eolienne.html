@@ -683,20 +683,56 @@ label.good{background:var(--vert-pale); color:var(--vert); font-weight:700} labe
 .graphe .nd{fill:var(--jaune-pale); stroke:var(--encre); stroke-width:2} .graphe .nt{font:700 14px var(--f-titre)}
 .note-fin{font:700 1.3rem var(--f-titre)}
 
+#modes{margin:0 0 10px}
+.mode-bar{display:flex; gap:14px; align-items:baseline; margin:0 0 8px}
+#mode-lab{font:700 .85rem var(--f-titre); background:var(--jaune); padding:2px 10px}
+body.mode-exam #mode-lab{background:var(--bleu); color:#fff}
+.eo-tabs.compact button{min-width:40px; text-align:center; padding:6px 8px}
+.eo-tabs button.fini{background:var(--jaune-pale)}
+.eo-tabs button.juste{background:var(--vert-pale); border-color:var(--vert)}
+.eo-tabs button.faux{background:var(--rouge-pale); border-color:var(--rouge)}
+.eo-tabs button[aria-selected="true"]{background:var(--encre); color:#fff}
+.eo-tabs button.fini::after{content:""}
+.kicker{margin:0; font:700 .8rem var(--f-titre); text-transform:uppercase; letter-spacing:.04em; color:var(--encre-2)}
+.eo-score{grid-template-columns:1fr 1fr}
+.eo-score .sc-t{grid-column:1/-1}
+.eo-score .sc-t b{font-size:1rem}
+.ddls{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.ddls span{font-weight:600; margin-right:4px}
+.ddl-b{width:40px; padding:6px 0; border:1.5px solid var(--encre); background:#fff; font:700 1.05rem var(--f-titre); cursor:pointer}
+.ddl-b[aria-pressed="true"]{background:var(--jaune)}
+.ddl-b.good{background:var(--vert-pale); border-color:var(--vert); color:var(--vert)} .ddl-b.bad{background:var(--rouge-pale); border-color:var(--rouge); color:var(--rouge)}
+label.picked{background:var(--jaune-pale); font-weight:700}
+.sch-opt.picked{border-color:var(--bleu); background:var(--bleu-pale)}
+.nav{display:flex; gap:8px; justify-content:flex-end; flex-wrap:wrap}
+.btn-ex{background:var(--bleu); border-color:var(--bleu)}
+.btn.confirm{background:var(--rouge); border-color:var(--rouge)}
+.fb .q-why p,.fb>p{margin:0 0 6px}
+.bilan-t td{vertical-align:middle} .bilan-t tr.r-ok td:last-child{color:var(--vert); font-weight:700} .bilan-t tr.r-ko td:last-child{color:var(--rouge); font-weight:700}
+.eo-img img{max-height:70vh; object-fit:contain}
+
 </style>
 </head>
 <body class="no-mode cours-page">
 <section id="home" aria-labelledby="home-title"><div class="home-inner">
 <p class="c-top no-print"><a class="btn ghost" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5.5h4V20"/></svg> Accueil</a></p>
 <div class="home-top home-top-single"><div class="home-top-l"><header class="home-head"><span class="mc-tag">Exercice 2.1 · Système 1</span> <span class="pastille n1">Niveau 1</span>
-<h1 id="home-title">L'éolienne : étude de toutes ses liaisons</h1>
-<p class="home-sub">Une éolienne transforme l'énergie du vent en électricité. On étudie toutes ses liaisons, de la pale à la fondation. Pour chaque liaison : remplis le tableau des mobilités, nomme la liaison et son axe, puis choisis son
-schéma. La pièce étudiée est en <b class="r">rouge</b>, la pièce de référence en <b class="b">bleu</b>.</p></header></div></div>
+<h1 id="home-title">L'éolienne : étude de toutes ses liaisons</h1><p class="home-sub">Une éolienne transforme l'énergie du vent en électricité. On étudie toutes ses liaisons, de la pale à la fondation. Pour chaque liaison : tableau des mobilités, nom et axe, puis schéma. La pièce étudiée est en <b class="r">rouge</b>, la pièce de référence en <b class="b">bleu</b>.</p></header></div></div>
+<section id="modes" aria-labelledby="modes-t"><h2 class="home-choose" id="modes-t">Choisis ton mode de travail</h2><div class="modes">
+<article class="mode-card"><div class="mc-head"><span class="mc-tag">Mode 1</span><h3>Entraînement</h3></div>
+<ul><li>Chaque étude se valide seule : la correction s'affiche aussitôt.</li><li>La note s'actualise au fil des études.</li></ul>
+<button type="button" class="btn" data-mode="training">Commencer l'entraînement</button></article>
+<article class="mode-card exam"><div class="mc-head"><span class="mc-tag">Mode 2</span><h3>Examen</h3></div>
+<ul><li>Aucune correction pendant la composition ; les réponses restent modifiables.</li><li>Chronomètre en marche ; tout est dévoilé à la remise de la copie.</li></ul>
+<button type="button" class="btn" data-mode="exam">Composer en mode examen</button></article></div>
+<p class="home-note small">Pour changer de mode, recharge la page. Rien n'est enregistré sur l'ordinateur.</p></section>
+<div id="travail" hidden><p class="mode-bar"><span id="mode-lab"></span> <a class="small" href="cours-1-1-liaisons-mecaniques.html" target="_blank" rel="noopener">Revoir le cours (nouvel onglet)</a></p>
 <nav id="tabs" class="eo-tabs" role="tablist" aria-label="Études"></nav>
 <div class="eo"><div class="eo-fig"><div class="eo-img"><img id="fig-img" src="" alt="">
 <svg id="ov" aria-hidden="true"><g id="ov-static"></g><g id="ov-move"></g></svg><div id="fig-rep"></div></div>
-<div class="eo-score"><div><span>Questions traitées</span><b id="sc-q"></b></div><div><span>Note</span><b id="sc-n"></b></div></div></div>
-<div id="etude" class="eo-panel" aria-live="polite"></div></div>
+<div class="eo-score"><div><span>Questions traitées</span><b id="sc-q"></b></div><div><span>Note</span><b id="sc-n"></b></div>
+<div class="sc-t"><span>Temps</span><b id="sc-t"></b></div></div></div>
+<div id="etude" class="eo-panel" aria-live="polite"></div></div></div>
 </div></section>
 <script>window.__SYSTEME__ = {"images": {"face": {"src": "data:image/png;base64,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FANCFCWJniiAYkCIoiSxfy6AYkCIoiTREwVQDAhRlCRCFEAxIERRktj2D0AxIERRkjJsQg+gCBCiKEmekRjRBTDYCFGULK6LAhhshChKFpvQAxhshChKVtr1lwDAwCJEUbJceqIABhkhipLF/rkABhshipLFNVEAg40QRckiRAEMNkIUJasjLRnGcwEMIkIUJSuekZqTXBcFMHgIUZS0dW1SMkOQAhgchChKWjwjLW+W2lPZTelN7gYAA4EQRcnrSEvLmqSVzdLmTqk9Tc8UwMAgRDEkpD2pMSGtaZM2ddAbBTAwCFEMKZ7J3gBgIBCiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiwBBiS3KsYDfb8j8bgN2xZq03xl8IYODYljSxShpb4a/pHSMp5Uqe56/pmYyR3mnwlwLYFXqiwBBhSYrYUiwc8BbyPyOA3SFEAQAIiBAFACAgQhQAgIAIUQAAAiJEAQAIiBAFACAgQhQAgIAIUQAAAiJEAQAIiBAFACAgQhQAgIAIUQAAAiJEAQAIiBAFACAgQhQAgIAIUQAAAiJEAQAIiBAFACAgQhQAgIAIUQAAAiJEAQAIyHp+TcL4CwEMHNuS9q4JaUKl46/qNc9kny+IlGs0a0PKXwxgF6xD77mQEAUGUdQJ69uHfFLnTz3ZX9UrRlLSTanMifireqQh0aaTH77EXwxgF6yRt51JiAKDqMyJ6vIjv6CLDjzLX9UrRkYJN61YwBDdHG/Swfd+3l8MYBesultPJ0SBQRRzovrxkV/S/5v2MX9Vr+xpiG6KN2naPef7iwHsAhOLAAAIyNr3lrPoiaJkeEZKe/7S0hZ1IrrkkM/oc/t92F/VK0ZSwk0F6okaSQ2JVr1v5tf8VYPOtqSQLQWcLwX0K+vJ675orNwvkZR9ow5Gqu7uNeysvjf37Wn9zuzucUHre3PfgbS717Cz+t7ct6f1XbYmw5rVVJ2719BgWZZiTlTloai/qlcKf35BuMZTU7LNXzzoyhxP7xvRrKjtbfe+6On7pj/t7jXsrL439+1p/c7s7nG7qy+0u/vurn4g7O417Ky+N/fN18/+/Rf9ZUDR2pSM6oXGuu3eyBi6yh1Xp45sVJnt+quAQcc1UQAlgI9NKE6EKAAAARGiAAAERIgCABAQIQoAQECEKAAAAbHEBf3KM5aWdJSrPRPyVwUS92xtSUVkeNcOG2HbaHQkpZC15//olmW0dyyuEZG0vwoIhBBFv8oYS6821WpLqve76OyIkeQay1+MIcySZFtGffGvbltGR1a3aa9Y3F8FBMJwLvqdZyxl+uhGgA4/XR+c/O+FoDd6DehLhCgAAAERogAABESIAgAQECEKAEBAhCgAAAERogAABESIAgAQECEKAEBAhCgAAAERogAABESIAgAQECEKAEBAhCgAAAERogAABESIAgAQECEKAEBA1uzff5EzatFvXGPprdZqNabD/ipgwNkyOqiqXeOiSX8VEAghin5lJCU9W2mPQQ8MPktGUcdT2KLZQ98gRAEACIjuAQAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQECEKAAAARGiAAAERIgCABAQIQoAQED/H5AmgWD5FvVdAAAAAElFTkSuQmCC", "w": 465, "h": 541, "alt": "Éolienne : pales, nacelle avec générateur, mât et fondation", "rep": {"label": "Repère : x vers la droite, y vers le haut, z vers l'observateur", "axes": [["x", 45, 0], ["y", 0, -45], ["z", 0, 0]]}, "zones": {"paleH": "M174 37 Q183 40 182 60 L181 156 L171 159 Q164 120 170 60 Q170 40 174 37Z", "paleB": "M171 231 L181 229 L182 350 Q182 370 176 371 Q168 352 167 300 Z", "moyeu": "M188 186 L152 186 Q131 190 131 204 Q132 219 152 222 L188 222Z", "nacelle": "M192 185 L312 188 Q329 194 328 206 Q325 218 302 221 L250 222 L250 234 L218 234 L218 222 L192 222Z", "mat": "M226 234 L250 234 L250 466 L261 466 L261 495 L226 495Z", "fondation": "M173 493 L298 493 L298 503 L318 503 L318 523 L153 523 L153 503 L173 503Z"}}}, "etudes": [{"titre": "Rotor / nacelle", "img": "face", "R": ["paleH", "paleB", "moyeu"], "B": ["nacelle"], "rN": "le rotor (pales + moyeu)", "bN": "la nacelle", "mob": [0, 0, 0, 1, 0, 0], "nom": "Pivot", "axe": "x", "anim": {"t": "scaleY", "ox": 160, "oy": 204}, "plan": "(O, x, y)", "why": "Le rotor tourne autour de l'arbre horizontal de la nacelle (axe x) : c'est son seul mouvement, le vent fait tourner les pales.", "sch": [["pivot", 0, 0, true], ["pivot", 0, 90], ["pivot", 1, 0], ["glissiere", 0, 0]]}, {"titre": "Nacelle / mât", "img": "face", "R": ["nacelle", "moyeu", "paleH", "paleB"], "B": ["mat"], "rN": "la nacelle (avec le rotor)", "bN": "le mât", "mob": [0, 0, 0, 0, 1, 0], "nom": "Pivot", "axe": "y", "anim": {"t": "scaleX", "ox": 238, "oy": 230}, "plan": "(O, x, y)", "why": "La nacelle s'oriente face au vent en tournant autour de l'axe vertical du mât (axe y).", "sch": [["pivot", 0, 0], ["pivot", 0, 90, true], ["pivot", 1, 0], ["pivot-glissant", 0, 90]]}, {"titre": "Pale / moyeu", "img": "face", "R": ["paleH"], "B": ["moyeu"], "rN": "la pale du haut", "bN": "le moyeu", "mob": [0, 0, 0, 0, 1, 0], "nom": "Pivot", "axe": "y", "anim": {"t": "scaleX", "ox": 176, "oy": 100}, "plan": "(O, x, y)", "why": "Chaque pale tourne sur elle-même pour régler son angle face au vent (le « calage ») : pivot d'axe y pour la pale du haut.", "sch": [["rotule", 0, 0], ["pivot", 0, 90, true], ["pivot", 1, 0], ["glissiere", 0, 90]]}, {"titre": "Mât / fondation", "img": "face", "R": ["mat"], "B": ["fondation"], "rN": "le mât", "bN": "la fondation", "mob": [0, 0, 0, 0, 0, 0], "nom": "Encastrement", "axe": "-", "anim": null, "plan": "(O, x, y)", "why": "Le mât est boulonné sur la fondation en béton : aucun mouvement possible. Mât et fondation forment un seul bloc.", "sch": [["encastrement", 0, 0, true], ["rotule", 0, 0], ["appui-plan", 0, 0], ["pivot", 1, 0]]}], "graphe": {"w": 460, "h": 250, "nodes": {"fondation": [70, 210, "Fondation"], "mat": [70, 120, "Mât"], "nacelle": [230, 50, "Nacelle"], "moyeu": [390, 120, "Moyeu"], "pale": [390, 210, "Pale"]}, "edges": [["mat", "fondation", 3], ["nacelle", "mat", 1], ["moyeu", "nacelle", 0], ["pale", "moyeu", 2]]}, "retenir": "le mât et la fondation sont encastrés : ils ne forment qu'une seule <strong>classe d'équivalence</strong> (un seul bloc). L'éolienne se ramène à une chaîne de 3 pivots : orientation de la nacelle (y), rotation du rotor (x) et calage de chaque pale."};</script>
 <script>
@@ -840,8 +876,10 @@ var SCHEMAS = (function () {
   return V;
 })();
 
-/* Exercice 2.1 — étude de toutes les liaisons d'un système réel (moteur commun).
-   Données : window.__SYSTEME__ (voir src/exercices/systemes.py). Dépend de SCHEMAS (src/cours/schemas.js). */
+/* Moteur commun des exercices « étude des liaisons » (exercices 1.1 et 2.1).
+   Données : window.__SYSTEME__ (images, études, graphe, retenir). Dépend de SCHEMAS (src/cours/schemas.js).
+   Une étude : img, titre, consigne (rN/bN ou texte), mob (Tx…Rz), nom, axe ("-" : sans axe),
+   et en option : ddl (question du nombre de ddl), R/B (zones colorées), anim, sch (question du schéma), why. */
 (function () {
   "use strict";
   function $(s, r) { return (r || document).querySelector(s); }
@@ -850,12 +888,36 @@ var SCHEMAS = (function () {
   var MVT = ["Tx", "Ty", "Tz", "Rx", "Ry", "Rz"];
   var NOMS = ["Encastrement", "Pivot", "Glissière", "Pivot glissant", "Hélicoïdale", "Appui plan",
               "Rotule", "Rotule à doigt", "Linéaire rectiligne", "Linéaire annulaire", "Ponctuelle"];
-  var PTS = { mob: 0.5, nom: 2, axe: 1, sch: 1 }; // 7 points et 9 questions par étude
+  var PTS = { mob: 0.5, ddl: 1, nom: 2, axe: 1, sch: 1 };
   var ET = D.etudes;
-  var st = ET.map(function () { return { v: [0, 0, 0, 0, 0, 0], done12: false, done3: false, pts: 0, nomRep: null, axeRep: null }; });
-  var cur = 0, curImg = null;
+  var st = ET.map(function () { return { v: [0, 0, 0, 0, 0, 0], ddl: null, nom: null, axe: null, sch: null, val12: false, val3: false }; });
+  var cur = 0, curImg = null, mode = null, rendu = false, t0 = null, tick = null;
 
-  function nomComplet(nom, axe) { return nom + (axe && axe !== "-" ? " d'axe " + axe : ""); }
+  function nomComplet(nom, axe) {
+    if (!nom) return "?";
+    var k = nom === "Appui plan" || nom === "Ponctuelle" ? " de normale " : " d'axe ";
+    return nom + (axe && axe !== "-" ? k + axe : "");
+  }
+  function maxPts(e) { return 6 * PTS.mob + PTS.nom + PTS.axe + (e.ddl != null ? PTS.ddl : 0) + (e.sch ? PTS.sch : 0); }
+  function nbQ(e) { return 8 + (e.ddl != null ? 1 : 0) + (e.sch ? 1 : 0); }
+  function ok12(i) {
+    var e = ET[i], s = st[i];
+    return s.v.every(function (v, j) { return v === e.mob[j]; }) && s.nom === e.nom && s.axe === e.axe && (e.ddl == null || s.ddl === e.ddl);
+  }
+  function pts(i) {
+    var e = ET[i], s = st[i], p = 0;
+    s.v.forEach(function (v, j) { if (v === e.mob[j]) p += PTS.mob; });
+    if (e.ddl != null && s.ddl === e.ddl) p += PTS.ddl;
+    if (s.nom === e.nom) p += PTS.nom;
+    if (s.axe === e.axe) p += PTS.axe;
+    if (e.sch && s.sch != null && e.sch[s.sch][3]) p += PTS.sch;
+    return p;
+  }
+  function answered(i) { var s = st[i], e = ET[i]; return s.nom && s.axe && (e.ddl == null || s.ddl != null); }
+  // la correction d'une étude se montre en entraînement après validation, en examen après la remise
+  function show12(i) { return mode === "exam" ? rendu : st[i].val12; }
+  function show3(i) { return mode === "exam" ? rendu : st[i].val3; }
+  function locked(i) { return mode === "exam" ? rendu : st[i].val12; }
 
   function showImage(id) {
     if (curImg === id) return;
@@ -863,21 +925,19 @@ var SCHEMAS = (function () {
     var im = D.images[id], r = im.rep;
     $("#fig-img").src = im.src; $("#fig-img").width = im.w; $("#fig-img").height = im.h; $("#fig-img").alt = im.alt;
     $("#ov").setAttribute("viewBox", "0 0 " + im.w + " " + im.h);
+    if (!r) { $("#fig-rep").innerHTML = ""; $("#fig-rep").className = ""; return; }
     var rep = '<svg class="eo-rep" viewBox="0 0 100 90" role="img" aria-label="' + r.label + '">';
     r.axes.forEach(function (a) {
-      if (a[1] === 0 && a[2] === 0) {
-        rep += '<circle cx="30" cy="60" r="7" class="o"/><circle cx="30" cy="60" r="2" class="pt"/><text x="' + 12 + '" y="84">' + a[0] + "</text>";
-      } else {
-        rep += '<line x1="30" y1="60" x2="' + (30 + a[1]) + '" y2="' + (60 + a[2]) + '" marker-end="url(#rp)"/><text x="' +
-          (30 + a[1] * 1.25 - 4) + '" y="' + (60 + a[2] * 1.25 + 5) + '">' + a[0] + "</text>";
-      }
+      if (a[1] === 0 && a[2] === 0) rep += '<circle cx="30" cy="60" r="7" class="o"/><circle cx="30" cy="60" r="2" class="pt"/><text x="12" y="84">' + a[0] + "</text>";
+      else rep += '<line x1="30" y1="60" x2="' + (30 + a[1]) + '" y2="' + (60 + a[2]) + '" marker-end="url(#rp)"/><text x="' +
+        (30 + a[1] * 1.25 - 4) + '" y="' + (60 + a[2] * 1.25 + 5) + '">' + a[0] + "</text>";
     });
     rep += '<defs><marker id="rp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10z"/></marker></defs></svg>';
     $("#fig-rep").innerHTML = rep;
     $("#fig-rep").className = "rep-pos " + (r.pos || "bl");
   }
   function zones(list, cls, img) {
-    return list.map(function (k) { return '<path class="' + cls + '" d="' + D.images[img].zones[k] + '"/>'; }).join("");
+    return (list || []).map(function (k) { return '<path class="' + cls + '" d="' + D.images[img].zones[k] + '"/>'; }).join("");
   }
   function overlay(i) {
     var e = ET[i];
@@ -888,6 +948,7 @@ var SCHEMAS = (function () {
   function play(i) {
     var e = ET[i], g = $("#ov-move"), svg = $("#ov");
     if (g._a) g._a.cancel();
+    if (!e.R) return;
     if (!e.anim) { svg.classList.remove("blocked"); void svg.getBoundingClientRect(); svg.classList.add("blocked"); return; }
     g.innerHTML = zones(e.R, "zm", e.img);
     var a = e.anim, kf = [];
@@ -905,114 +966,161 @@ var SCHEMAS = (function () {
   function schemaHTML(s) {
     return '<div class="sch-in" style="transform:rotate(' + -s[2] + 'deg)">' + SCHEMAS[s[0]][s[1]].svg + "</div>";
   }
+  function cls(show, good, picked) { return show ? (good ? " good" : (picked ? " bad" : "")) : (picked && mode === "exam" ? " picked" : ""); }
 
-  function render() {
-    var e = ET[cur], s = st[cur];
-    overlay(cur);
+  function tabs() {
     $$("#tabs button").forEach(function (b, i) {
       b.setAttribute("aria-selected", i === cur ? "true" : "false");
-      b.classList.toggle("fini", st[i].done3);
+      var done = mode === "exam" ? answered(i) : st[i].val12 && (!ET[i].sch || st[i].val3);
+      b.classList.toggle("fini", done && !(mode === "exam" && rendu));
+      b.classList.toggle("juste", show12(i) && ok12(i) && (!ET[i].sch || show3(i)));
+      b.classList.toggle("faux", show12(i) && !ok12(i));
     });
+  }
+
+  function render() {
+    var e = ET[cur], s = st[cur], sh = show12(cur), lk = locked(cur);
+    overlay(cur); tabs();
     var table = '<table class="mob"><thead><tr><th colspan="3">Translation</th><th colspan="3">Rotation</th></tr><tr>' +
       MVT.map(function (m) { return "<th>" + m + "</th>"; }).join("") + "</tr></thead><tbody><tr>" +
       s.v.map(function (v, i) {
-        var cls = s.done12 ? (v === e.mob[i] ? "g-ok" : "g-ko") : "";
-        return '<td class="' + cls + '"><button type="button" class="mob-g" data-i="' + i + '" data-v="' + v + '"' + (s.done12 ? " disabled" : "") +
-          ' aria-label="' + MVT[i] + " : " + v + '">' + v + "</button></td>";
+        return '<td class="' + (sh ? (v === e.mob[i] ? "g-ok" : "g-ko") : "") + '"><button type="button" class="mob-g" data-i="' + i + '" data-v="' + v + '"' +
+          (lk ? " disabled" : "") + ' aria-label="' + MVT[i] + " : " + v + '">' + v + "</button></td>";
       }).join("") + "</tr></tbody></table>";
+    var ddl = e.ddl == null ? "" : '<div class="ddls"><span>Nombre de degrés de liberté :</span>' + [0, 1, 2, 3, 4, 5, 6].map(function (n) {
+      return '<button type="button" class="ddl-b' + cls(sh, n === e.ddl, s.ddl === n) + '" data-n="' + n + '" aria-pressed="' + (s.ddl === n) + '"' + (lk ? " disabled" : "") + ">" + n + "</button>";
+    }).join("") + "</div>";
     var noms = NOMS.map(function (n) {
-      var cls = s.done12 ? (n === e.nom ? " good" : (s.nomRep === n ? " bad" : "")) : "";
-      return '<label class="nm' + cls + '"><input type="radio" name="nom" value="' + n + '"' + (s.nomRep === n ? " checked" : "") +
-        (s.done12 ? " disabled" : "") + "> " + n + "</label>";
+      return '<label class="nm' + cls(sh, n === e.nom, s.nom === n) + '"><input type="radio" name="nom" value="' + n + '"' + (s.nom === n ? " checked" : "") +
+        (lk ? " disabled" : "") + "> " + n + "</label>";
     }).join("");
     var axes = ["x", "y", "z", "-"].map(function (a) {
-      var cls = s.done12 ? (a === e.axe ? " good" : (s.axeRep === a ? " bad" : "")) : "";
-      return '<label class="ax' + cls + '"><input type="radio" name="axe" value="' + a + '"' + (s.axeRep === a ? " checked" : "") +
-        (s.done12 ? " disabled" : "") + "> " + (a === "-" ? "sans axe" : a) + "</label>";
+      return '<label class="ax' + cls(sh, a === e.axe, s.axe === a) + '"><input type="radio" name="axe" value="' + a + '"' + (s.axe === a ? " checked" : "") +
+        (lk ? " disabled" : "") + "> " + (a === "-" ? "sans axe" : a) + "</label>";
     }).join("");
-    var order = [1, 3, 0, 2].map(function (k) { return (k + cur) % 4; });
-    var sch = order.map(function (k) {
-      var o = e.sch[k], cls = s.done3 ? (o[3] ? " good" : (s.schRep === k ? " bad" : "")) : "";
-      return '<button type="button" class="sch-opt' + cls + '" data-k="' + k + '"' + (s.done3 || !s.done12 ? " disabled" : "") +
-        ' aria-label="Schéma ' + (order.indexOf(k) + 1) + '">' + schemaHTML(o) + "</button>";
-    }).join("");
-    var ok3 = s.done3 && e.sch[s.schRep][3];
+    var q3 = "";
+    if (e.sch) {
+      var order = [1, 3, 0, 2].map(function (k) { return (k + cur) % 4; }), s3 = show3(cur), open3 = mode === "exam" ? !rendu : s.val12 && !s.val3;
+      q3 = '<section class="q' + (open3 || s3 ? "" : " locked") + '"><h3><span class="qn">' + (e.ddl != null ? 4 : 3) +
+        "</span> Par quel dessin représente-t-on cette liaison dans le plan " + e.plan + " ?</h3>" +
+        (mode !== "exam" && !s.val12 ? '<p class="lock">Réponds d\'abord aux questions précédentes.</p>' : "") + '<div class="schs">' +
+        order.map(function (k) {
+          return '<button type="button" class="sch-opt' + cls(s3, e.sch[k][3], s.sch === k) + '" data-k="' + k + '"' + (open3 ? "" : " disabled") +
+            ' aria-label="Schéma ' + (order.indexOf(k) + 1) + '">' + schemaHTML(e.sch[k]) + "</button>";
+        }).join("") + "</div>" +
+        (s3 && s.sch != null ? '<p class="fb ' + (e.sch[s.sch][3] ? "ok" : "ko") + '">' + (e.sch[s.sch][3] ? "✔ Bon schéma." :
+          "✘ Ce n'est pas le bon schéma : vérifie le type de liaison et l'orientation de son axe dans le plan " + e.plan + ".") + "</p>" : "") + "</section>";
+    }
+    var qn = e.ddl != null ? 3 : 2;
+    var consigne = e.rN ? 'On s\'intéresse à la liaison de <b class="r">' + e.rN + '</b> avec <b class="b">' + e.bN + "</b>." : e.consigne;
     $("#etude").innerHTML =
-      "<h2>Étude " + (cur + 1) + " — " + e.titre + "</h2>" +
-      '<p class="consigne">On s\'intéresse à la liaison de <b class="r">' + e.rN + '</b> avec <b class="b">' + e.bN + "</b>." +
-      (e.note ? ' <span class="small">' + e.note + "</span>" : "") + "</p>" +
+      '<p class="kicker">' + (e.sys ? e.sys + " · " : "") + "étude " + (cur + 1) + " / " + ET.length + "</p>" +
+      "<h2>" + e.titre + "</h2>" +
+      '<p class="consigne">' + consigne + (e.note ? ' <span class="small">' + e.note + "</span>" : "") + "</p>" +
       '<section class="q"><h3><span class="qn">1</span> Remplis le tableau des mobilités</h3><p class="small">Clique sur une case pour passer de 0 à 1.</p>' + table + "</section>" +
-      '<section class="q"><h3><span class="qn">2</span> Quel est le nom de cette liaison ? Quel est son axe ?</h3><div class="noms">' + noms +
+      (ddl ? '<section class="q"><h3><span class="qn">2</span> Combien cette liaison a-t-elle de degrés de liberté ?</h3>' + ddl + "</section>" : "") +
+      '<section class="q"><h3><span class="qn">' + qn + '</span> Quel est le nom de cette liaison ? Quel est son axe' +
+      (e.nom === "Appui plan" || e.nom === "Ponctuelle" ? " (sa normale)" : "") + ' ?</h3><div class="noms">' + noms +
       '</div><div class="axes"><span>Axe :</span>' + axes + "</div>" +
-      (s.done12 ? "" : '<button type="button" class="btn" id="val12">Valider les questions 1 et 2</button><p class="warn" id="warn" aria-live="polite"></p>') + "</section>" +
-      (s.done12 ? '<div class="fb ' + (s.ok12 ? "ok" : "ko") + '"><p><strong>' + (s.ok12 ? "✔ " : "✘ ") + "Correction :</strong> " +
-        nomComplet(e.nom, e.axe).toLowerCase() + ". " + e.why + '</p><button type="button" class="btn ghost" id="voir">▶ Voir le mouvement</button></div>' : "") +
-      '<section class="q' + (s.done12 ? "" : " locked") + '"><h3><span class="qn">3</span> Par quel dessin représente-t-on cette liaison dans le plan ' + e.plan + " ?</h3>" +
-      (s.done12 ? "" : '<p class="lock">Réponds d\'abord aux questions 1 et 2.</p>') + '<div class="schs">' + sch + "</div>" +
-      (s.done3 ? '<p class="fb ' + (ok3 ? "ok" : "ko") + '">' + (ok3 ? "✔ Bon schéma." :
-        "✘ Ce n'est pas le bon schéma : vérifie le type de liaison et l'orientation de son axe dans le plan " + e.plan + ".") + "</p>" : "") + "</section>" +
-      '<div class="nav">' + (cur < ET.length - 1 ? '<button type="button" class="btn" id="next">Étude suivante ▶</button>'
-        : '<button type="button" class="btn" id="bilan-btn">Voir le bilan ▶</button>') + "</div>";
+      (mode === "exam" || s.val12 ? "" : '<button type="button" class="btn" id="val12">Valider</button>') +
+      '<p class="warn" id="warn" aria-live="polite"></p></section>' +
+      (sh ? '<div class="fb ' + (ok12(cur) ? "ok" : "ko") + '"><p><strong>' + (ok12(cur) ? "✔ " : "✘ ") + "Correction :</strong> " +
+        nomComplet(e.nom, e.axe).toLowerCase() + (e.ddl != null ? " — " + e.ddl + " ddl" : "") + ".</p>" + (e.why || "") +
+        (e.R ? '<button type="button" class="btn ghost" id="voir">▶ Voir le mouvement</button>' : "") + "</div>" : "") +
+      q3 +
+      '<div class="nav">' + (cur > 0 ? '<button type="button" class="btn ghost" id="prev">◀ Précédente</button>' : "") +
+      (cur < ET.length - 1 ? '<button type="button" class="btn" id="next">Étude suivante ▶</button>'
+        : (mode === "exam" && !rendu ? '<button type="button" class="btn btn-ex" id="rendre">J\'ai fini, je rends ma copie</button>'
+          : '<button type="button" class="btn" id="bilan-btn">Voir le bilan ▶</button>')) + "</div>";
 
-    $$(".mob-g").forEach(function (b) {
-      b.addEventListener("click", function () { var i = +b.getAttribute("data-i"); s.v[i] = s.v[i] ? 0 : 1; render(); });
-    });
-    $$('input[name="nom"]').forEach(function (r) { r.addEventListener("change", function () { s.nomRep = r.value; }); });
-    $$('input[name="axe"]').forEach(function (r) { r.addEventListener("change", function () { s.axeRep = r.value; }); });
+    $$(".mob-g").forEach(function (b) { b.addEventListener("click", function () { var i = +b.getAttribute("data-i"); s.v[i] = s.v[i] ? 0 : 1; render(); }); });
+    $$(".ddl-b").forEach(function (b) { b.addEventListener("click", function () { s.ddl = +b.getAttribute("data-n"); render(); }); });
+    $$('input[name="nom"]').forEach(function (r) { r.addEventListener("change", function () { s.nom = r.value; tabs(); }); });
+    $$('input[name="axe"]').forEach(function (r) { r.addEventListener("change", function () { s.axe = r.value; tabs(); }); });
     var v12 = $("#val12");
     if (v12) v12.addEventListener("click", function () {
-      if (!s.nomRep || !s.axeRep) { $("#warn").textContent = "Choisis un nom de liaison et un axe avant de valider."; return; }
-      var p = 0;
-      s.v.forEach(function (v, i) { if (v === e.mob[i]) p += PTS.mob; });
-      s.ok12 = p === 3 && s.nomRep === e.nom && s.axeRep === e.axe;
-      if (s.nomRep === e.nom) p += PTS.nom;
-      if (s.axeRep === e.axe) p += PTS.axe;
-      s.pts = p; s.done12 = true; score(); render(); play(cur);
+      if (!answered(cur)) { $("#warn").textContent = "Réponds à toutes les questions (nom, axe" + (e.ddl != null ? ", nombre de ddl" : "") + ") avant de valider."; return; }
+      s.val12 = true; score(); render(); play(cur);
     });
     var voir = $("#voir"); if (voir) voir.addEventListener("click", function () { play(cur); });
     $$(".sch-opt").forEach(function (b) {
       b.addEventListener("click", function () {
-        var k = +b.getAttribute("data-k"); s.schRep = k; s.done3 = true;
-        if (e.sch[k][3]) s.pts += PTS.sch;
+        s.sch = +b.getAttribute("data-k");
+        if (mode !== "exam") s.val3 = true;
         score(); render();
       });
     });
-    var nx = $("#next"); if (nx) nx.addEventListener("click", function () { cur++; render(); window.scrollTo(0, $("#tabs").offsetTop - 8); });
+    function go(i) { cur = i; render(); var t = $("#tabs"); if (t.getBoundingClientRect().top < 0) window.scrollTo(0, t.offsetTop - 8); }
+    var pv = $("#prev"); if (pv) pv.addEventListener("click", function () { go(cur - 1); });
+    var nx = $("#next"); if (nx) nx.addEventListener("click", function () { go(cur + 1); });
     var bl = $("#bilan-btn"); if (bl) bl.addEventListener("click", bilan);
+    var rd = $("#rendre"); if (rd) rd.addEventListener("click", rendre);
+  }
+
+  function rendre() {
+    var vides = ET.filter(function (e, i) { return !answered(i); }).length;
+    var b = $("#rendre");
+    if (!b.classList.contains("confirm")) {
+      b.classList.add("confirm");
+      b.textContent = vides ? "Confirmer : " + vides + " étude" + (vides > 1 ? "s" : "") + " incomplète" + (vides > 1 ? "s" : "") + ", je rends quand même" : "Confirmer la remise de ma copie";
+      return;
+    }
+    rendu = true; clearInterval(tick); score(); bilan();
   }
 
   function note() {
-    var pts = st.reduce(function (a, s) { return a + s.pts; }, 0);
-    return pts / (ET.length * 7) * 20;
+    var p = 0, m = 0;
+    ET.forEach(function (e, i) {
+      m += maxPts(e);
+      if (mode === "exam" ? rendu : st[i].val12) p += pts(i);
+    });
+    return p / m * 20;
   }
   function score() {
-    var done = st.reduce(function (a, s) { return a + (s.done12 ? 8 : 0) + (s.done3 ? 1 : 0); }, 0);
-    $("#sc-q").textContent = done + " / " + ET.length * 9;
-    $("#sc-n").textContent = note().toLocaleString("fr-FR", { maximumFractionDigits: 1 }) + " / 20";
+    var done = 0, tot = 0;
+    ET.forEach(function (e, i) {
+      tot += nbQ(e);
+      if (mode === "exam" ? answered(i) : st[i].val12) done += nbQ(e) - (e.sch ? 1 : 0);
+      if (e.sch && st[i].sch != null) done += 1;
+    });
+    $("#sc-q").textContent = done + " / " + tot;
+    $("#sc-n").textContent = mode === "exam" && !rendu ? "après la remise" : note().toLocaleString("fr-FR", { maximumFractionDigits: 1 }) + " / 20";
+  }
+  function chrono() {
+    var sec = Math.floor((Date.now() - t0) / 1000);
+    $("#sc-t").textContent = Math.floor(sec / 60) + " min " + ("0" + sec % 60).slice(-2) + " s" + (D.minutes ? " (conseillé : " + D.minutes + " min)" : "");
   }
 
-  // bilan : graphe des liaisons construit à partir des réponses de l'élève
+  // bilan : tableau des études et, si le système en a un, graphe des liaisons construit avec les réponses
   function bilan() {
-    var G = D.graphe, N = G.nodes;
-    var svg = '<svg viewBox="0 0 ' + G.w + " " + G.h + '" class="graphe" role="img" aria-label="Graphe des liaisons">';
-    G.edges.forEach(function (ed) {
-      var a = N[ed[0]], b = N[ed[1]], e = ET[ed[2]], s = st[ed[2]];
-      var ok = s.done12 && s.nomRep === e.nom && s.axeRep === e.axe;
-      var lab = s.done12 ? nomComplet(s.nomRep, s.axeRep) : "?";
-      var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
-      svg += '<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" class="' + (ok ? "gg" : "gk") + '"/>' +
-        '<rect x="' + (mx - 68) + '" y="' + (my - 11) + '" width="136" height="22" rx="11" class="lb ' + (ok ? "gg" : "gk") + '"/><text x="' + mx + '" y="' + (my + 4) + '">' + lab + "</text>";
-    });
-    Object.keys(N).forEach(function (k) {
-      var n = N[k];
-      svg += '<ellipse cx="' + n[0] + '" cy="' + n[1] + '" rx="58" ry="20" class="nd"/><text x="' + n[0] + '" y="' + (n[1] + 5) + '" class="nt">' + n[2] + "</text>";
-    });
-    svg += "</svg>";
-    $("#etude").innerHTML = "<h2>Bilan — le graphe des liaisons</h2>" +
-      "<p>Chaque ellipse est une pièce (ou un groupe de pièces), chaque trait une liaison, avec <strong>ta</strong> réponse (vert : juste, rouge : à revoir).</p>" + svg +
-      '<div class="retenir"><p><strong>À retenir :</strong> ' + D.retenir + "</p></div>" +
-      '<p class="note-fin">Note : <b>' + $("#sc-n").textContent + "</b></p>" +
-      '<div class="nav"><button type="button" class="btn ghost" id="back">◀ Revenir aux études</button> <button type="button" class="btn ghost" id="print">Imprimer</button></div>';
+    var G = D.graphe, h = "";
+    if (G) {
+      var N = G.nodes;
+      h += '<svg viewBox="0 0 ' + G.w + " " + G.h + '" class="graphe" role="img" aria-label="Graphe des liaisons">';
+      G.edges.forEach(function (ed) {
+        var a = N[ed[0]], b = N[ed[1]], i = ed[2], s = st[i], ok = ok12(i);
+        var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, c = ok ? "gg" : "gk";
+        h += '<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" class="' + c + '"/>' +
+          '<rect x="' + (mx - 68) + '" y="' + (my - 11) + '" width="136" height="22" rx="11" class="lb ' + c + '"/><text x="' + mx + '" y="' + (my + 4) + '">' + nomComplet(s.nom, s.axe) + "</text>";
+      });
+      Object.keys(N).forEach(function (k) {
+        var n = N[k];
+        h += '<ellipse cx="' + n[0] + '" cy="' + n[1] + '" rx="58" ry="20" class="nd"/><text x="' + n[0] + '" y="' + (n[1] + 5) + '" class="nt">' + n[2] + "</text>";
+      });
+      h += "</svg>";
+    }
+    var rows = ET.map(function (e, i) {
+      var p = pts(i), m = maxPts(e);
+      return '<tr class="' + (p === m ? "r-ok" : "r-ko") + '"><td>' + (i + 1) + "</td><td>" + (e.sys ? e.sys + " — " : "") + e.titre + "</td><td>" +
+        nomComplet(st[i].nom, st[i].axe) + "</td><td>" + nomComplet(e.nom, e.axe) + "</td><td>" + p.toLocaleString("fr-FR") + " / " + m + "</td></tr>";
+    }).join("");
+    $("#etude").innerHTML = "<h2>Bilan</h2>" +
+      (G ? "<p>Le graphe des liaisons, avec <strong>tes</strong> réponses (vert : juste, rouge : à revoir).</p>" + h : "") +
+      '<div class="recap-wrap"><table class="t bilan-t"><thead><tr><th>#</th><th>Étude</th><th>Ta réponse</th><th>Attendu</th><th>Points</th></tr></thead><tbody>' + rows + "</tbody></table></div>" +
+      (D.retenir ? '<div class="retenir"><p><strong>À retenir :</strong> ' + D.retenir + "</p></div>" : "") +
+      '<p class="note-fin">Note : <b>' + note().toLocaleString("fr-FR", { maximumFractionDigits: 1 }) + " / 20</b>" + (mode === "exam" ? " · " + $("#sc-t").textContent : "") + "</p>" +
+      '<div class="nav"><button type="button" class="btn ghost" id="back">◀ Revoir les études</button> <button type="button" class="btn ghost" id="print">Imprimer</button>' +
+      ' <a class="btn ghost" href="' + (D.retour || "index.html") + '">' + (D.retourTxt || "Accueil") + "</a></div>";
     $("#ov-static").innerHTML = "";
     showImage(D.bilanImg || ET[0].img);
     $("#back").addEventListener("click", function () { cur = 0; render(); });
@@ -1020,12 +1128,27 @@ var SCHEMAS = (function () {
     $$("#tabs button").forEach(function (b) { b.setAttribute("aria-selected", "false"); });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    $("#tabs").innerHTML = ET.map(function (e, i) { return '<button type="button" role="tab" data-i="' + i + '">' + (i + 1) + ". " + e.titre + "</button>"; }).join("");
-    $$("#tabs button").forEach(function (b) { b.addEventListener("click", function () { cur = +b.getAttribute("data-i"); render(); }); });
+  function start(m) {
+    mode = m;
+    document.body.classList.add("mode-" + m);
+    $("#modes").hidden = true; $("#travail").hidden = false;
+    $("#mode-lab").textContent = m === "exam" ? "Mode examen" : "Mode entraînement";
+    t0 = Date.now(); chrono(); tick = setInterval(chrono, 1000);
     score(); render();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    $("#tabs").innerHTML = ET.map(function (e, i) {
+      var lab = D.compact ? String(i + 1) : (i + 1) + ". " + e.titre;
+      return '<button type="button" role="tab" data-i="' + i + '" title="' + (e.sys ? e.sys + " — " : "") + e.titre + '">' + lab + "</button>";
+    }).join("");
+    $("#tabs").classList.toggle("compact", !!D.compact);
+    $$("#tabs button").forEach(function (b) { b.addEventListener("click", function () { cur = +b.getAttribute("data-i"); render(); }); });
+    $$("[data-mode]").forEach(function (b) { b.addEventListener("click", function () { start(b.getAttribute("data-mode")); }); });
+    var h = (location.hash || "").slice(1);
+    if (h === "examen") start("exam"); else if (h === "entrainement") start("training");
   });
-  window.__ETUDES__ = { ETUDES: ET, st: st, note: note };
+  window.__ETUDES__ = { ETUDES: ET, st: st, note: note, start: start };
 })();
 </script>
 </body>
